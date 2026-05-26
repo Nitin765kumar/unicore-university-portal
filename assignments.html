@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignments Log | UNICORE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-canvas: #f8fafc;
+            --surface-card: #ffffff;
+            --brand-primary: #0d6efd;
+            --brand-gradient: linear-gradient(135deg, #0d6efd, #0052cc);
+            --sidebar-gradient: linear-gradient(180deg, #0f172a, #1e293b);
+            --border-light: #f1f5f9;
+            --text-dark: #0f172a;
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.02);
+        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-canvas); color: var(--text-dark); }
+        .portal-container { display: flex; min-height: 100vh; }
+        .sidebar-component { width: 280px; background: var(--sidebar-gradient); color: #fff; padding: 35px 24px; display: flex; flex-direction: column; justify-content: space-between; position: fixed; top: 0; left: 0; bottom: 0; z-index: 1000; }
+        .brand-logo { font-size: 1.75rem; font-weight: 800; font-family: 'Poppins', sans-serif; margin-bottom: 40px; }
+        .brand-logo span { color: var(--brand-primary); }
+        .nav-menu { list-style: none; padding: 0; }
+        .nav-link-custom { display: flex; align-items: center; gap: 14px; padding: 12px 18px; color: #94a3b8; text-decoration: none; font-weight: 500; border-radius: 12px; transition: 0.2s; margin-bottom: 8px; }
+        .nav-link-custom:hover, .nav-link-custom.active { color: #fff; background: rgba(255, 255, 255, 0.04); }
+        .nav-link-custom.active { background: var(--brand-gradient); box-shadow: 0 8px 20px rgba(13, 110, 253, 0.2); }
+        .workspace-wrapper { margin-left: 280px; width: calc(100% - 280px); padding: 45px; }
+        
+        .assignment-row { background: var(--surface-card); border: 1px solid var(--border-light); border-radius: 18px; padding: 24px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s ease; box-shadow: var(--shadow-sm); }
+        .assignment-row:hover { transform: translateX(5px); box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
+        .empty-state-box { background: var(--surface-card); border: 2px dashed #cbd5e1; border-radius: 20px; padding: 60px 20px; text-align: center; }
+
+        @media (max-width: 1024px) { .sidebar-component { width: 100%; height: auto; position: relative; } .workspace-wrapper { margin-left: 0; width: 100%; padding: 24px; } .portal-container { flex-direction: column; } .assignment-row { flex-direction: column; align-items: flex-start; gap: 20px; } .upload-action-btn { width: 100%; text-align: center; } }
+    </style>
+</head>
+<body>
+    <div class="portal-container">
+        <aside class="sidebar-component">
+            <div>
+                <div class="brand-logo">UNI<span>CORE</span></div>
+                <ul class="nav-menu">
+                    <li><a href="student-dashboard.html" class="nav-link-custom"><i class="fas fa-chart-pie"></i>Dashboard Overview</a></li>
+                    <li><a href="curriculum.html" class="nav-link-custom"><i class="fas fa-graduation-cap"></i>Curriculum Programs</a></li>
+                    <li><a href="assignments.html" class="nav-link-custom active"><i class="fas fa-clipboard-list"></i>Assignments Log</a></li>
+                    <li><a href="attendance.html" class="nav-link-custom"><i class="fas fa-clock-rotate-left"></i>Attendance Audits</a></li>
+                    <li><a href="broadcast.html" class="nav-link-custom"><i class="fas fa-bullhorn"></i>Broadcast Board</a></li>
+                </ul>
+            </div>
+            <div class="text-muted small border-top pt-3 border-secondary">v2.4.0 &bull; Secure Session</div>
+        </aside>
+
+        <main class="workspace-wrapper">
+            <div class="mb-5">
+                <h2 class="fw-bold text-dark mb-1">Assignments Log Workspace</h2>
+                <p class="text-muted mb-0">Track active assignment metrics, manage laboratory project files, and monitor execution milestones.</p>
+            </div>
+
+            <!-- Stats Ribbon Area -->
+            <div class="row g-4 mb-4" id="statsRibbonRow" style="display:none;">
+                <div class="col-md-6 col-lg-3">
+                    <div class="p-3 bg-white border rounded-4 shadow-sm">
+                        <div class="text-muted small font-monospace uppercase fw-bold">Pending Delivery</div>
+                        <div class="fs-3 fw-bold text-danger mt-1" id="pendingCounterField">2 Tasks</div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="p-3 bg-white border rounded-4 shadow-sm">
+                        <div class="text-muted small font-monospace uppercase fw-bold">Completed Runs</div>
+                        <div class="fs-3 fw-bold text-success mt-1" id="completedCounterField">0 Tasks</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Interactive Container Target -->
+            <div id="assignmentsWorkspaceAnchor"></div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const assignmentDataset = [
+                { id: "A1", label: "High Priority", labelClass: "bg-danger-subtle text-danger border-danger", module: "CS-302: Enterprise Python Engineering", title: "Mini Project Submission: Python Systems REST API Mockup", deadline: "Within 48 Hours", type: "Technical Production Lab" },
+                { id: "A2", label: "Standard", labelClass: "bg-secondary-subtle text-secondary border-secondary", module: "CS-304: Distributed File Architectures", title: "Database Schema Diagrams Mapping Lab Assignment Sheet", deadline: "5 Days Remaining", type: "Theoretical Architecture Analysis" }
+            ];
+
+            let completedTaskIds = [];
+
+            function renderAssignmentsEngine() {
+                const isEnrolled = localStorage.getItem("studentEnrollmentConfirmed") === "true";
+                const anchor = document.getElementById("assignmentsWorkspaceAnchor");
+                const statsRibbon = document.getElementById("statsRibbonRow");
+                
+                if (!isEnrolled) {
+                    statsRibbon.style.display = "none";
+                    anchor.innerHTML = `
+                        <div class="empty-state-box shadow-sm">
+                            <div class="text-warning display-4 mb-3"><i class="fas fa-triangle-exclamation"></i></div>
+                            <h4 class="fw-bold text-dark mb-2">No Active Tracks Allocated</h4>
+                            <p class="text-muted mx-auto mb-4" style="max-width: 480px;">Your assignments profile tracking parameters require verification. Please establish enrollment structures first.</p>
+                            <a href="curriculum.html" class="btn btn-outline-primary rounded-3 px-4"><i class="fas fa-arrow-right me-2"></i>Go to Curriculum Programs</a>
+                        </div>`;
+                    return;
+                }
+
+                statsRibbon.style.display = "flex";
+                document.getElementById("pendingCounterField").textContent = `${assignmentDataset.length - completedTaskIds.length} Tasks`;
+                document.getElementById("completedCounterField").textContent = `${completedTaskIds.length} Verified`;
+
+                anchor.innerHTML = assignmentDataset.map(task => {
+                    const isDone = completedTaskIds.includes(task.id);
+                    return `
+                        <div class="assignment-row">
+                            <div style="max-width:75%;">
+                                <div class="d-flex align-items-center gap-2 mb-2 flex-wrap">
+                                    <span class="badge ${task.labelClass} border px-2 py-1">${task.label}</span>
+                                    <span class="text-primary small fw-semibold font-monospace"><i class="fas fa-code-branch me-1"></i>${task.module}</span>
+                                </div>
+                                <h5 class="fw-bold text-dark mb-2">${task.title}</h5>
+                                <div class="d-flex align-items-center gap-3 text-muted small flex-wrap">
+                                    <span><i class="far fa-calendar-alt me-1.5"></i>${task.deadline}</span>
+                                    <span>&bull;</span>
+                                    <span><i class="fas fa-microscope me-1.5"></i>${task.type}</span>
+                                </div>
+                            </div>
+                            <div>
+                                ${isDone 
+                                    ? `<button class="btn btn-success rounded-3 px-4 disabled upload-action-btn"><i class="fas fa-circle-check me-2"></i>Artifact Accepted</button>`
+                                    : `<button class="btn btn-primary rounded-3 px-4 upload-action-btn" onclick="triggerFileSubmissionWorkflow('${task.id}', this)"><i class="fas fa-cloud-arrow-up me-2"></i>Upload Artifact</button>`
+                                }
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            window.triggerFileSubmissionWorkflow = function(id, btnElement) {
+                const uploader = document.createElement('input');
+                uploader.type = 'file';
+                uploader.onchange = () => {
+                    if (uploader.files.length > 0) {
+                        btnElement.innerHTML = `<i class="fas fa-spinner fa-spin me-2"></i>Processing...`;
+                        setTimeout(() => {
+                            completedTaskIds.push(id);
+                            renderAssignmentsEngine();
+                        }, 1200);
+                    }
+                };
+                uploader.click();
+            };
+
+            renderAssignmentsEngine();
+        });
+    </script>
+</body>
+</html>

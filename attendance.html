@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Audits | UNICORE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-canvas: #f8fafc;
+            --surface-card: #ffffff;
+            --brand-primary: #0d6efd;
+            --brand-gradient: linear-gradient(135deg, #0d6efd, #0052cc);
+            --sidebar-gradient: linear-gradient(180deg, #0f172a, #1e293b);
+            --border-light: #f1f5f9;
+            --text-dark: #0f172a;
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.02);
+        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-canvas); color: var(--text-dark); }
+        .portal-container { display: flex; min-height: 100vh; }
+        .sidebar-component { width: 280px; background: var(--sidebar-gradient); color: #fff; padding: 35px 24px; display: flex; flex-direction: column; justify-content: space-between; position: fixed; top: 0; left: 0; bottom: 0; z-index: 1000; }
+        .nav-menu { list-style: none; padding: 0; }
+        .nav-link-custom { display: flex; align-items: center; gap: 14px; padding: 12px 18px; color: #94a3b8; text-decoration: none; font-weight: 500; border-radius: 12px; transition: 0.2s; margin-bottom: 8px; }
+        .nav-link-custom:hover, .nav-link-custom.active { color: #fff; background: rgba(255, 255, 255, 0.04); }
+        .nav-link-custom.active { background: var(--brand-gradient); box-shadow: 0 8px 20px rgba(13, 110, 253, 0.2); }
+        .workspace-wrapper { margin-left: 280px; width: calc(100% - 280px); padding: 45px; }
+        
+        .metric-banner { background: var(--surface-card); border-radius: 20px; padding: 32px; border: 1px solid var(--border-light); margin-bottom: 35px; box-shadow: var(--shadow-sm); }
+        .progress-micro-bar { height: 8px; border-radius: 4px; background-color: #e2e8f0; overflow: hidden; margin-top: 8px; }
+        .progress-fill-indicator { height: 100%; background: var(--brand-gradient); transition: width 0.5s ease; }
+
+        @media (max-width: 1024px) { .sidebar-component { width: 100%; height: auto; position: relative; } .workspace-wrapper { margin-left: 0; width: 100%; padding: 24px; } .portal-container { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <div class="portal-container">
+        <aside class="sidebar-component">
+            <div>
+                <div class="brand-logo" style="font-size:1.75rem; font-weight:800; margin-bottom:40px; font-family:'Poppins', sans-serif;">UNI<span class="text-primary">CORE</span></div>
+                <ul class="nav-menu">
+                    <li><a href="student-dashboard.html" class="nav-link-custom"><i class="fas fa-chart-pie"></i>Dashboard Overview</a></li>
+                    <li><a href="curriculum.html" class="nav-link-custom"><i class="fas fa-graduation-cap"></i>Curriculum Programs</a></li>
+                    <li><a href="assignments.html" class="nav-link-custom"><i class="fas fa-clipboard-list"></i>Assignments Log</a></li>
+                    <li><a href="attendance.html" class="nav-link-custom active"><i class="fas fa-clock-rotate-left"></i>Attendance Audits</a></li>
+                    <li><a href="broadcast.html" class="nav-link-custom"><i class="fas fa-bullhorn"></i>Broadcast Board</a></li>
+                </ul>
+            </div>
+            <div class="text-muted small border-top pt-3 border-secondary">v2.4.0 &bull; Secure Session</div>
+        </aside>
+
+        <main class="workspace-wrapper">
+            <div class="mb-5">
+                <h2 class="fw-bold text-dark mb-1">Attendance Analytics</h2>
+                <p class="text-muted mb-0">Monitor statutory presence compliance constraints, view aggregate statistics metrics, and verify lecture tallies.</p>
+            </div>
+
+            <!-- Dynamic Aggregated Metrics Banner -->
+            <div class="metric-banner d-flex justify-content-between align-items-center flex-wrap gap-4" id="aggregateMetricsBannerContainer">
+                <!-- Javascript updates inner elements based on shared state logs -->
+            </div>
+
+            <!-- Interactive Sheet Data Grid Structure -->
+            <h4 class="fw-bold text-dark mb-4">Module Presence Audit Sheet</h4>
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0 text-center">
+                        <thead class="table-light text-secondary font-monospace small">
+                            <tr>
+                                <th class="text-start ps-4 py-3">SUBJECT CODE & DESCRIPTION</th>
+                                <th class="py-3">CONDUCTED LECTURES</th>
+                                <th class="py-3">ATTENDED UNITS</th>
+                                <th class="py-3">RATIO MATRIX</th>
+                                <th class="text-end pe-4 py-3">COMPLIANCE CRITERIA</th>
+                            </tr>
+                        </thead>
+                        <tbody id="attendanceSheetTarget">
+                            <!-- Injected by internal storage routing algorithms -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const staticAttendanceRecords = [
+                { id: "CS-302", title: "Enterprise Python Engineering", total: 24, attended: 22, rate: "91.6%", metricVal: 91.6, stateBadge: "bg-success-subtle text-success border-success" },
+                { id: "CS-304", title: "Distributed File Architectures", total: 20, attended: 17, rate: "85.0%", metricVal: 85, stateBadge: "bg-success-subtle text-success border-success" },
+                { id: "CS-306", title: "Human Machine Interaction Concepts", total: 16, attended: 14, rate: "87.5%", metricVal: 87.5, stateBadge: "bg-success-subtle text-success border-success" }
+            ];
+            
+            const isEnrolled = localStorage.getItem("studentEnrollmentConfirmed") === "true";
+            const bannerContainer = document.getElementById("aggregateMetricsBannerContainer");
+            const targetContainer = document.getElementById("attendanceSheetTarget");
+
+            if (isEnrolled) {
+                // Render Authorized State Header Banner
+                bannerContainer.innerHTML = `
+                    <div style="flex-grow:1; max-width:600px;">
+                        <h3 class="fw-extrabold mb-1 text-dark">88.3% Total Presence</h3>
+                        <p class="text-muted small mb-0">Minimum university threshold eligibility safety target metric requirement: <span class="fw-bold text-dark">75.0%</span></p>
+                        <div class="progress-micro-bar"><div class="progress-fill-indicator" style="width: 88.3%;"></div></div>
+                    </div>
+                    <span class="badge bg-success-subtle text-success px-4 py-2.5 rounded-pill border border-success fw-bold font-monospace"><i class="fas fa-circle-check me-2"></i>Safe Status Clear</span>`;
+
+                // Render Authorized State Data Table
+                targetContainer.innerHTML = staticAttendanceRecords.map(row => `
+                    <tr>
+                        <td class="text-start ps-4 py-3">
+                            <span class="badge bg-light text-secondary border font-monospace small me-2">${row.id}</span>
+                            <span class="fw-bold text-dark">${row.title}</span>
+                        </td>
+                        <td class="text-secondary font-monospace">${row.total} Classes</td>
+                        <td class="text-dark fw-medium font-monospace">${row.attended} Units</td>
+                        <td class="fw-extrabold text-primary font-monospace">${row.rate}</td>
+                        <td class="text-end pe-4 py-3"><span class="badge ${row.stateBadge} border font-monospace px-2.5 py-1.5">Compliant</span></td>
+                    </tr>
+                `).join('');
+            } else {
+                // Render Unenrolled Isolated Alert Views
+                bannerContainer.innerHTML = `
+                    <div>
+                        <h4 class="fw-bold mb-1 text-danger">0.0% Aggregate Presence Logged</h4>
+                        <p class="text-muted small mb-0">Academic system attendance monitors are completely offline due to missing catalog tracking keys.</p>
+                    </div>
+                    <span class="badge bg-danger-subtle text-danger px-4 py-2 rounded-pill border border-danger fw-bold"><i class="fas fa-triangle-exclamation me-2"></i>Tracking Suspended</span>`;
+
+                targetContainer.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="text-muted text-center p-5">
+                            <div class="mb-2 fs-3 text-secondary"><i class="fas fa-folder-lock"></i></div>
+                            Enrollment audit traces missing. Run term configurations within your <a href="curriculum.html" class="fw-semibold text-decoration-none text-primary">Curriculum view</a> to open live presence trackers.
+                        </td>
+                    </tr>`;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broadcast Board | UNICORE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-canvas: #f8fafc;
+            --surface-card: #ffffff;
+            --brand-primary: #0d6efd;
+            --brand-gradient: linear-gradient(135deg, #0d6efd, #0052cc);
+            --sidebar-gradient: linear-gradient(180deg, #0f172a, #1e293b);
+            --border-light: #f1f5f9;
+            --text-dark: #0f172a;
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.02);
+        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-canvas); color: var(--text-dark); }
+        .portal-container { display: flex; min-height: 100vh; }
+        .sidebar-component { width: 280px; background: var(--sidebar-gradient); color: #fff; padding: 35px 24px; display: flex; flex-direction: column; justify-content: space-between; position: fixed; top: 0; left: 0; bottom: 0; z-index: 1000; }
+        .nav-menu { list-style: none; padding: 0; }
+        .nav-link-custom { display: flex; align-items: center; gap: 14px; padding: 12px 18px; color: #94a3b8; text-decoration: none; font-weight: 500; border-radius: 12px; transition: 0.2s; margin-bottom: 8px; }
+        .nav-link-custom:hover, .nav-link-custom.active { color: #fff; background: rgba(255, 255, 255, 0.04); }
+        .nav-link-custom.active { background: var(--brand-gradient); box-shadow: 0 8px 20px rgba(13, 110, 253, 0.2); }
+        .workspace-wrapper { margin-left: 280px; width: calc(100% - 280px); padding: 45px; }
+        
+        .notice-card { background: var(--surface-card); border-radius: 18px; padding: 26px; border: 1px solid var(--border-light); margin-bottom: 20px; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-sm); }
+        .notice-card:hover { transform: scale(1.005) translateX(3px); box-shadow: 0 6px 20px rgba(0,0,0,0.03); }
+        .tab-btn-custom { border: none; background: transparent; padding: 8px 16px; font-weight: 500; color: #64748b; border-bottom: 2px solid transparent; transition: 0.2s; }
+        .tab-btn-custom.active { color: var(--brand-primary); border-bottom-color: var(--brand-primary); font-weight: 700; }
+
+        @media (max-width: 1024px) { .sidebar-component { width: 100%; height: auto; position: relative; } .workspace-wrapper { margin-left: 0; width: 100%; padding: 24px; } .portal-container { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <div class="portal-container">
+        <aside class="sidebar-component">
+            <div>
+                <div class="brand-logo" style="font-size:1.75rem; font-weight:800; margin-bottom:40px; font-family:'Poppins', sans-serif;">UNI<span class="text-primary">CORE</span></div>
+                <ul class="nav-menu">
+                    <li><a href="student-dashboard.html" class="nav-link-custom"><i class="fas fa-chart-pie"></i>Dashboard Overview</a></li>
+                    <li><a href="curriculum.html" class="nav-link-custom"><i class="fas fa-graduation-cap"></i>Curriculum Programs</a></li>
+                    <li><a href="assignments.html" class="nav-link-custom"><i class="fas fa-clipboard-list"></i>Assignments Log</a></li>
+                    <li><a href="attendance.html" class="nav-link-custom"><i class="fas fa-clock-rotate-left"></i>Attendance Audits</a></li>
+                    <li><a href="broadcast.html" class="nav-link-custom active"><i class="fas fa-bullhorn"></i>Broadcast Board</a></li>
+                </ul>
+            </div>
+            <div class="text-muted small border-top pt-3 border-secondary">v2.4.0 &bull; Secure Session</div>
+        </aside>
+
+        <main class="workspace-wrapper">
+            <div class="mb-5">
+                <h2 class="fw-bold text-dark mb-1">Broadcast Board</h2>
+                <p class="text-muted mb-0">Official institutional notifications, examination declarations, and academic alerts.</p>
+            </div>
+
+            <!-- Interactive Filtering Tabs Navigation -->
+            <div class="d-flex border-bottom gap-3 mb-4 flex-wrap">
+                <button class="tab-btn-custom active" data-filter="all"><i class="fas fa-list me-2"></i>All Feeds</button>
+                <button class="tab-btn-custom" data-filter="critical"><i class="fas fa-triangle-exclamation me-2"></i>Critical Items</button>
+                <button class="tab-btn-custom" data-filter="events"><i class="fas fa-calendar-day me-2"></i>Events & Panels</button>
+            </div>
+
+            <!-- Feed Content Stream Node -->
+            <div id="broadcastFeedStreamWrapper">
+                <!-- Data feeds loop natively inside this block below -->
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const broadcastNotices = [
+                { category: "critical", borderClass: "border-danger", tag: "Critical Update", tagClass: "bg-danger", title: "End-Term Final Semester Practical Assessment Routing Charts Issued", text: "All terminal year engineering branches must assemble project log templates, architecture schemas, and git artifacts before the upcoming panel presentation evaluations begin.", time: "2 hours ago" },
+                { category: "events", borderClass: "border-primary", tag: "General Event", tagClass: "bg-primary", title: "Registration Framework Guidelines Opened for International Hackathon Panels", text: "Project application registrations are open globally. Submit your structure abstract maps directly via structural cell groups to claim credit allocation overrides.", time: "Yesterday" },
+                { category: "events", borderClass: "border-info", tag: "Workshop", tagClass: "bg-info text-dark", title: "AWS Distributed Clusters Guest Seminar", text: "Join cloud solution leads in the main tech theater on Friday for a performance optimization deep dive focusing on container orchestration models.", time: "3 days ago" }
+            ];
+
+            const feedContainer = document.getElementById("broadcastFeedStreamWrapper");
+            const filterButtons = document.querySelectorAll(".tab-btn-custom");
+
+            function renderFeed(filterMode = "all") {
+                const filteredData = filterMode === "all" 
+                    ? broadcastNotices 
+                    : broadcastNotices.filter(item => item.category === filterMode);
+
+                if(filteredData.length === 0) {
+                    feedContainer.innerHTML = `<div class="p-5 text-center text-muted bg-white border rounded-4 shadow-sm">No recent notifications matching this stream index feed.</div>`;
+                    return;
+                }
+
+                feedContainer.innerHTML = filteredData.map(notice => `
+                    <div class="notice-card border-start border-4 ${notice.borderClass}">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+                            <div style="max-width: 85%;">
+                                <span class="badge ${notice.tagClass} mb-2.5 px-2.5 py-1.5 fw-semibold font-monospace">${notice.tag}</span>
+                                <h5 class="fw-bold text-dark mb-2">${notice.title}</h5>
+                                <p class="text-secondary small mb-0" style="line-height:1.65;">${notice.text}</p>
+                            </div>
+                            <small class="text-muted font-monospace bg-light border px-2 py-1 rounded small">${notice.time}</small>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            filterButtons.forEach(btn => {
+                btn.addEventListener("click", (e) => {
+                    filterButtons.forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+                    renderFeed(btn.getAttribute("data-filter"));
+                });
+            });
+
+            // Initial view run call
+            renderFeed();
+        });
+    </script>
+</body>
+</html>

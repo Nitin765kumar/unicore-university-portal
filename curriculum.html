@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Programs | UNICORE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-canvas: #f8fafc;
+            --surface-card: #ffffff;
+            --brand-primary: #0d6efd;
+            --brand-gradient: linear-gradient(135deg, #0d6efd, #0052cc);
+            --sidebar-gradient: linear-gradient(180deg, #0f172a, #1e293b);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-light: #f1f5f9;
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.02);
+        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-canvas); color: var(--text-main); }
+        .portal-container { display: flex; min-height: 100vh; }
+        .sidebar-component { width: 280px; background: var(--sidebar-gradient); color: #fff; padding: 35px 24px; display: flex; flex-direction: column; justify-content: space-between; position: fixed; top: 0; left: 0; bottom: 0; z-index: 1000; }
+        .brand-logo { font-size: 1.75rem; font-weight: 800; font-family: 'Poppins', sans-serif; margin-bottom: 40px; }
+        .brand-logo span { color: var(--brand-primary); }
+        .nav-menu { list-style: none; padding: 0; }
+        .nav-link-custom { display: flex; align-items: center; gap: 14px; padding: 12px 18px; color: #94a3b8; text-decoration: none; font-weight: 500; border-radius: 12px; transition: 0.2s; margin-bottom: 8px; }
+        .nav-link-custom:hover, .nav-link-custom.active { color: #fff; background: rgba(255, 255, 255, 0.04); }
+        .nav-link-custom.active { background: var(--brand-gradient); box-shadow: 0 8px 20px rgba(13, 110, 253, 0.2); }
+        .workspace-wrapper { margin-left: 280px; width: calc(100% - 280px); padding: 45px; }
+        
+        .program-card { background: var(--surface-card); border-radius: 20px; padding: 28px; border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); height: 100%; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; justify-content: space-between; }
+        .program-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06); }
+        .metric-pill { background: var(--surface-card); border: 1px solid var(--border-light); border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow-sm); }
+        .icon-box { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
+
+        @media (max-width: 1024px) { .sidebar-component { width: 100%; height: auto; position: relative; } .workspace-wrapper { margin-left: 0; width: 100%; padding: 24px; } .portal-container { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <div class="portal-container">
+        <aside class="sidebar-component">
+            <div>
+                <div class="brand-logo">UNI<span>CORE</span></div>
+                <ul class="nav-menu">
+                    <li><a href="student-dashboard.html" class="nav-link-custom"><i class="fas fa-chart-pie"></i>Dashboard Overview</a></li>
+                    <li><a href="curriculum.html" class="nav-link-custom active"><i class="fas fa-graduation-cap"></i>Curriculum Programs</a></li>
+                    <li><a href="assignments.html" class="nav-link-custom"><i class="fas fa-clipboard-list"></i>Assignments Log</a></li>
+                    <li><a href="attendance.html" class="nav-link-custom"><i class="fas fa-clock-rotate-left"></i>Attendance Audits</a></li>
+                    <li><a href="broadcast.html" class="nav-link-custom"><i class="fas fa-bullhorn"></i>Broadcast Board</a></li>
+                </ul>
+            </div>
+            <div class="text-muted small border-top pt-3 border-secondary">v2.4.0 &bull; Secure Session</div>
+        </aside>
+
+        <main class="workspace-wrapper">
+            <!-- Header section -->
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-5">
+                <div>
+                    <h2 class="fw-bold text-dark mb-1">Curriculum Programs</h2>
+                    <p class="text-muted mb-0">Review core academic Syllabi requirements and register your academic term footprint.</p>
+                </div>
+                <div id="enrollmentStatusBadge"></div>
+            </div>
+
+            <!-- Tracker Stats Ribbon -->
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="metric-pill">
+                        <div class="icon-box bg-primary-subtle text-primary"><i class="fas fa-book-bookmark"></i></div>
+                        <div>
+                            <h4 class="fw-bold mb-0">3 Core Units</h4>
+                            <small class="text-muted">Assigned Tracks</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="metric-pill">
+                        <div class="icon-box bg-success-subtle text-success"><i class="fas fa-star"></i></div>
+                        <div>
+                            <h4 class="fw-bold mb-0" id="allocatedCreditsPill">11 Credits</h4>
+                            <small class="text-muted">Total Graduation Weight</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="metric-pill">
+                        <div class="icon-box bg-warning-subtle text-warning"><i class="fas fa-calendar-check"></i></div>
+                        <div>
+                            <h4 class="fw-bold mb-0">Spring 2026</h4>
+                            <small class="text-muted">Current Term Timeline</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="fw-bold text-dark mb-4">Available Syllabi Modules</h4>
+            <div class="row g-4" id="curriculumGridContainer">
+                <!-- Javascript builds data structural loops directly here -->
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const curriculumDataset = [
+                { id: "CS-302", name: "Enterprise Python Engineering", dept: "Computer Science & Engineering", credits: 4, type: "Core Lab Included", desc: "Covers clean architecture, production REST APIs, concurrency frameworks, and enterprise scaling paradigms using Python." },
+                { id: "CS-304", name: "Distributed File Architectures", dept: "Data Systems Division", credits: 4, type: "Theoretical Matrix", desc: "An architectural deep-dive into multi-node storage structures, replication protocols, consensus logic, and cloud databases." },
+                { id: "CS-306", name: "Human Machine Interaction Concepts", dept: "UI/UX Systems Engineering", credits: 3, type: "Elective Module", desc: "Explores structural usability workflows, high-fidelity cognitive prototyping models, and design system implementation metrics." }
+            ];
+
+            function renderCurriculumUi() {
+                const isEnrolled = localStorage.getItem("studentEnrollmentConfirmed") === "true";
+                const badgeContainer = document.getElementById("enrollmentStatusBadge");
+                const gridContainer = document.getElementById("curriculumGridContainer");
+                const creditsPill = document.getElementById("allocatedCreditsPill");
+
+                creditsPill.textContent = isEnrolled ? "11 Credits Allocated" : "0 Credits (Unregistered)";
+
+                badgeContainer.innerHTML = isEnrolled 
+                    ? `<div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-success-subtle text-success border border-success px-4 py-2 rounded-pill fw-semibold"><i class="fas fa-shield-halved me-2"></i>Active Term Verified</span>
+                        <button class="btn btn-outline-danger btn-sm rounded-3 ms-2" id="resetEnrollmentBtn"><i class="fas fa-power-off"></i></button>
+                       </div>`
+                    : `<button class="btn btn-primary px-4 py-2 shadow-sm rounded-3 fw-semibold" id="bulkEnrollActionBtn"><i class="fas fa-signature me-2"></i>Confirm Semester Selection</button>`;
+
+                gridContainer.innerHTML = curriculumDataset.map(course => `
+                    <div class="col-lg-4 col-md-6">
+                        <div class="program-card">
+                            <div>
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <span class="badge bg-light text-secondary border px-2 py-1.5 font-monospace fw-bold">${course.id}</span>
+                                    <span class="small text-muted fw-medium"><i class="far fa-folder me-1"></i>${course.type}</span>
+                                </div>
+                                <h5 class="fw-bold mb-2 text-dark">${course.name}</h5>
+                                <p class="text-secondary small mb-3">${course.dept}</p>
+                                <p class="text-muted small style="line-height: 1.6;">${course.desc}</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center border-top pt-3 mt-4">
+                                <span class="text-primary small fw-bold"><i class="far fa-star me-1"></i>${course.credits} Academic Credits</span>
+                                ${isEnrolled 
+                                    ? `<span class="text-success small fw-bold bg-success-subtle px-3 py-1 rounded-pill"><i class="fas fa-circle-check me-1"></i>Registered</span>`
+                                    : `<span class="text-warning small fw-bold bg-warning-subtle px-3 py-1 rounded-pill"><i class="fas fa-circle-notch fa-spin me-1"></i>Pending Setup</span>`
+                                }
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                if(!isEnrolled) {
+                    document.getElementById("bulkEnrollActionBtn").addEventListener("click", () => {
+                        if(confirm("Authorize structural catalog configuration updates? Confirming will populate registration rows across all active tracker sheets.")) {
+                            localStorage.setItem("studentEnrollmentConfirmed", "true");
+                            renderCurriculumUi();
+                        }
+                    });
+                } else {
+                    document.getElementById("resetEnrollmentBtn").addEventListener("click", () => {
+                        if(confirm("Simulate resetting enrollment status back to unverified evaluation mode?")) {
+                            localStorage.removeItem("studentEnrollmentConfirmed");
+                            renderCurriculumUi();
+                        }
+                    });
+                }
+            }
+            renderCurriculumUi();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,683 @@
+<!-- =========================
+     student-dashboard.html
+========================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal | UNICORE University</title>
+
+    <!-- Framework Elements -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-canvas: #f8fafc;
+            --surface-card: #ffffff;
+            --brand-primary: #0d6efd;
+            --brand-gradient: linear-gradient(135deg, #0d6efd, #0052cc);
+            --sidebar-gradient: linear-gradient(180deg, #0f172a, #1e293b);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-light: #f1f5f9;
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 10px 30px rgba(13, 110, 253, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-canvas);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* Portal Layout Structural Splitter */
+        .portal-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Component */
+        .sidebar-component {
+            width: 280px;
+            background: var(--sidebar-gradient);
+            color: #ffffff;
+            padding: 35px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            z-index: 1000;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .brand-logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: -0.5px;
+            margin-bottom: 40px;
+        }
+
+        .brand-logo span {
+            color: var(--brand-primary);
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            margin-bottom: 8px;
+        }
+
+        .nav-link-custom {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 18px;
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link-custom i {
+            font-size: 1.15rem;
+            width: 24px;
+            transition: transform 0.2s ease;
+        }
+
+        .nav-link-custom:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .nav-link-custom:hover i {
+            transform: scale(1.1);
+        }
+
+        .nav-link-custom.active {
+            background: var(--brand-gradient);
+            color: #ffffff;
+            font-weight: 600;
+            box-shadow: 0 8px 20px rgba(13, 110, 253, 0.2);
+        }
+
+        .btn-portal-logout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(239, 68, 68, 0.1);
+            color: #f87171;
+            padding: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(239, 68, 68, 0.15);
+        }
+
+        .btn-portal-logout:hover {
+            background: #ef4444;
+            color: #ffffff;
+        }
+
+        /* Core Workspace Area */
+        .workspace-wrapper {
+            margin-left: 280px;
+            width: calc(100% - 280px);
+            padding: 45px;
+        }
+
+        /* Profile Header Component */
+        .workspace-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .profile-badge-widget {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--surface-card);
+            padding: 10px 18px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .avatar-initials-frame {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: var(--brand-gradient);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Metric Analytics System Dashboard Cards */
+        .stat-card-premium {
+            background: var(--surface-card);
+            border-radius: 24px;
+            padding: 28px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .stat-card-premium:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(13, 110, 253, 0.2);
+        }
+
+        .stat-icon-wrapper {
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .stat-icon-wrapper.blue { background-color: #eff6ff; color: #2563eb; }
+        .stat-icon-wrapper.green { background-color: #f0fdf4; color: #16a34a; }
+        .stat-icon-wrapper.purple { background-color: #faf5ff; color: #7c3aed; }
+
+        /* Progress Rings Canvas Graphics */
+        .progress-ring-svg {
+            transform: rotate(-90deg);
+            width: 65px;
+            height: 65px;
+        }
+
+        .progress-ring-circle-bg {
+            fill: none;
+            stroke: #f1f5f9;
+            stroke-width: 6;
+        }
+
+        .progress-ring-circle-fill {
+            fill: none;
+            stroke: #16a34a;
+            stroke-width: 6;
+            stroke-dasharray: 157;
+            stroke-dashoffset: 157;
+            transition: stroke-dashoffset 1s ease-in-out;
+            stroke-linecap: round;
+        }
+
+        /* Workspace Tab Controls Interface Architecture */
+        .workspace-card-container {
+            background: var(--surface-card);
+            border-radius: 24px;
+            padding: 32px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .custom-tabs-nav {
+            display: flex;
+            gap: 12px;
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 16px;
+            margin-bottom: 28px;
+        }
+
+        .tab-trigger {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .tab-trigger:hover {
+            color: var(--text-main);
+            background: var(--border-light);
+        }
+
+        .tab-trigger.active {
+            background: #eff6ff;
+            color: var(--brand-primary);
+        }
+
+        /* Modernized Schedule System Data Tables */
+        .table-modern-viewport th {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            font-weight: 700;
+            padding: 16px;
+            background: #f8fafc;
+            border: none;
+        }
+
+        .table-modern-viewport td {
+            padding: 20px 16px;
+            vertical-align: middle;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .table-modern-viewport tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Empty Framework Layout Container States */
+        .state-empty-wrapper {
+            text-align: center;
+            padding: 60px 40px;
+            border: 2px dashed #cbd5e1;
+            border-radius: 20px;
+            background: #fafafa;
+        }
+
+        .state-empty-icon {
+            font-size: 3.5rem;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        /* Interactive Notification Matrix Layout Row Elements */
+        .bulletin-row-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 20px;
+            border-radius: 14px;
+            background: var(--bg-canvas);
+            margin-bottom: 12px;
+            border: 1px solid var(--border-light);
+            transition: transform 0.2s ease;
+        }
+
+        .bulletin-row-item:hover {
+            transform: scale(1.01);
+            background-color: #ffffff;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Responsive Breakpoints Rules Configuration */
+        @media (max-width: 1024px) {
+            .sidebar-component { width: 100%; height: auto; position: relative; padding: 20px; }
+            .workspace-wrapper { margin-left: 0; width: 100%; padding: 24px; }
+            .portal-container { flex-direction: column; }
+            .nav-menu { display: flex; flex-wrap: wrap; gap: 8px; }
+            .brand-logo { margin-bottom: 20px; }
+            .btn-portal-logout { margin-top: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LIGHTWEIGHT BLOCKING SECURITY GATEWAY -->
+    <script>
+        (function() {
+            if (!localStorage.getItem("activeStudentSession")) {
+                alert("Security Gateway: Authorized session not verified. Returning to portal terminal.");
+                window.location.replace("student-login.html");
+            }
+        })();
+    </script>
+
+    <div class="portal-container">
+        <!-- Interactive Navigation Sidebar Component Layout -->
+        <aside class="sidebar-component">
+            <div>
+                <div class="brand-logo">UNI<span>CORE</span></div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="student-dashboard.html" class="nav-link-custom active">
+                            <i class="fas fa-chart-pie"></i>Dashboard Overview
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="curriculum.html" id="sidebarCoursesLink">
+                            <i class="fas fa-graduation-cap"></i>Curriculum Programs
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="assignments.html" id="sidebarAssignmentsLink">
+                            <i class="fas fa-clipboard-list"></i>Assignments Log
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="attendance.html" id="sidebarAttendanceLink">
+                            <i class="fas fa-clock-rotate-left"></i>Attendance Audits
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="broadcast.html" id="sidebarBroadcastLink">
+                            <i class="fas fa-bullhorn"></i>Broadcast Board
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <a href="student-login.html" class="btn-portal-logout" id="portalLogoutAction">
+                <i class="fas fa-power-off"></i>Terminate Session
+            </a>
+        </aside>
+
+        <!-- Main Dynamic Workspace Window Frame Container -->
+        <main class="workspace-wrapper">
+            
+            <!-- Contextual Greetings Profiler Row Bar Header Header Elements -->
+            <header class="workspace-header">
+                <div>
+                    <h3 class="fw-bold tracking-tight mb-1" id="contextWelcomeHeader">Welcome, Student!</h3>
+                    <p class="text-muted small mb-0">System status operational. Everything looks trackable.</p>
+                </div>
+                <div class="profile-badge-widget">
+                    <div class="avatar-initials-frame" id="avatarInitialsContainer">--</div>
+                    <div>
+                        <h6 class="mb-0 fw-bold" id="headerProfileFullName">User Account</h6>
+                        <small class="text-muted font-monospace" id="headerProfileMajor">Department Stream</small>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Premium Metrics Reporting Overview Grid Layout Panels -->
+            <div class="row g-4 mb-5">
+                <!-- Courses Metrics Tracking Card Grid -->
+                <div class="col-xl-4 col-md-6">
+                    <div class="stat-card-premium">
+                        <div>
+                            <span class="text-muted d-block small font-medium mb-1">Active Modules</span>
+                            <h3 class="fw-bold text-dark mb-0" id="metricActiveModulesCount">00</h3>
+                        </div>
+                        <div class="stat-icon-wrapper blue">
+                            <i class="fas fa-book-bookmark"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dynamic Attendance Progress Analytics Arc Card Wrapper -->
+                <div class="col-xl-4 col-md-6">
+                    <div class="stat-card-premium">
+                        <div>
+                            <span class="text-muted d-block small font-medium mb-1">Total Attendance</span>
+                            <h3 class="fw-bold text-dark mb-0" id="metricAttendanceTextValue">0%</h3>
+                        </div>
+                        <div class="position-relative">
+                            <svg class="progress-ring-svg">
+                                <circle class="progress-ring-circle-bg" cx="32.5" cy="32.5" r="25"/>
+                                <circle class="progress-ring-circle-fill" id="animatedMetricsRing" cx="32.5" cy="32.5" r="25"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grade Point Average Tracker Card With Interactive Action Hooks -->
+                <div class="col-xl-4 col-md-12">
+                    <div class="stat-card-premium" style="cursor: pointer;" id="triggerGpaWidgetAction" data-bs-toggle="tooltip" title="Click to view full statement matrix">
+                        <div>
+                            <span class="text-muted d-block small font-medium mb-1">Academic Grade Index</span>
+                            <h3 class="fw-bold text-dark mb-0">8.74 <span class="text-success small fw-medium" style="font-size: 0.85rem;"><i class="fas fa-arrow-up-right me-1"></i>CGPA</span></h3>
+                        </div>
+                        <div class="stat-icon-wrapper purple">
+                            <i class="fas fa-chart-line-up"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Academic Work Center Workspace Architecture Panels -->
+            <div class="workspace-card-container mb-4">
+                <div class="custom-tabs-nav" id="workspaceOperationalTabsController">
+                    <button class="tab-trigger active" data-target="panel-schedule">Daily Schedule</button>
+                    <button class="tab-trigger" data-target="panel-assignments">Pending Deliverables</button>
+                </div>
+
+                <div id="dynamicWorkspaceViewRenderer">
+                    <!-- Javascript populates data lists safely at initialization runtime execution sequences -->
+                </div>
+            </div>
+
+            <!-- University News Broadcast Notice Widget Container -->
+            <div class="workspace-card-container">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h5 class="fw-bold mb-1">System Notice Bulletin</h5>
+                        <p class="text-muted small mb-0">Official updates issued by administrative registries.</p>
+                    </div>
+                    <button class="btn btn-light btn-sm fw-semibold px-3">Archive Log</button>
+                </div>
+
+                <div class="bulletin-row-item">
+                    <div>
+                        <h6 class="fw-bold mb-1">End-Term Final Semester Practical Assessment Routing Charts Issued</h6>
+                        <small class="text-muted"><i class="far fa-clock me-1"></i>Published 2 hours ago &bull; Academic Office</small>
+                    </div>
+                    <span class="badge bg-danger rounded-pill px-3 py-2">Critical</span>
+                </div>
+
+                <div class="bulletin-row-item">
+                    <div>
+                        <h6 class="fw-bold mb-1">Registration Framework Guidelines Opened for International Hackathon Panels</h6>
+                        <small class="text-muted"><i class="far fa-clock me-1"></i>Published Yesterday &bull; Student Councils</small>
+                    </div>
+                    <span class="badge bg-primary rounded-pill px-3 py-2">General</span>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Interactive CGPA Detail Modal Tool Window Structure Overlay -->
+    <div class="modal fade" id="gpaStatementDetailsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold">Academic Performance Breakdown</h5>
+                    <button type="button" class="btn-close" data-bs-shadow="none" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body py-4">
+                    <div class="p-3 bg-light rounded-3 mb-3">
+                        <div class="d-flex justify-content-between mb-2"><span>Semester Term 1 Index:</span><strong>8.62 SGPA</strong></div>
+                        <div class="d-flex justify-content-between mb-2"><span>Semester Term 2 Index:</span><strong>8.85 SGPA</strong></div>
+                        <hr class="my-2">
+                        <div class="d-flex justify-content-between fw-bold text-primary"><span>Cumulative Average Balance:</span><span>8.74 CGPA</span></div>
+                    </div>
+                    <p class="text-muted small mb-0">Note: Grade index formulas adhere to university standards. For official grade sheets, contact the registrar's office.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Execution Bundle Script Elements Wrapper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const systemActiveSessionRaw = localStorage.getItem("activeStudentSession");
+            if (!systemActiveSessionRaw) return;
+
+            const currentSessionUser = JSON.parse(systemActiveSessionRaw);
+
+            // Compute dynamic system time greeting parameters
+            const hourMetrics = new Date().getHours();
+            let contextualGreeting = "Good Evening";
+            if (hourMetrics < 12) contextualGreeting = "Good Morning";
+            else if (hourMetrics < 17) contextualGreeting = "Good Afternoon";
+
+            // Bind user context data properties across view fields safely
+            document.getElementById("contextWelcomeHeader").textContent = `${contextualGreeting}, ${currentSessionUser.fullName.split(' ')[0]}!`;
+            document.getElementById("headerProfileFullName").textContent = currentSessionUser.fullName;
+            document.getElementById("headerProfileMajor").textContent = `${currentSessionUser.major || 'Computer Applications'} Division`;
+
+            // Setup profile text icon acronym block elements representation
+            const textTokens = currentSessionUser.fullName.trim().split(/\s+/);
+            const userAcronym = textTokens.length > 1 ? (textTokens[0][0] + textTokens[1][0]) : textTokens[0][0];
+            document.getElementById("avatarInitialsContainer").textContent = userAcronym.toUpperCase();
+
+            // Core academic syllabus datasets structure arrays matching registrations
+            const dailyClassScheduleDataset = [
+                { code: "CS-302", name: "Enterprise Python Engineering", instructor: "Dr. A. Anand", duration: "09:30 AM - 11:00 AM", hall: "Tech Lab Alpha" },
+                { code: "CS-304", name: "Distributed File Architectures", instructor: "Prof. S. Pillai", duration: "11:30 AM - 01:00 PM", hall: "Lecture Theatre 4" },
+                { code: "CS-306", name: "Human Machine Interaction Concepts", instructor: "Dr. M. Roy", duration: "02:00 PM - 03:30 PM", hall: "Block C Annex" }
+            ];
+
+            let activeTabId = "panel-schedule";
+
+            // Setup dynamic workspace presentation engine
+            function evaluateWorkspaceContextDisplay() {
+                const enrollmentConfirmedFlag = localStorage.getItem("studentEnrollmentConfirmed");
+                const dynamicTargetCanvas = document.getElementById("dynamicWorkspaceViewRenderer");
+                const modulesCounterMetric = document.getElementById("metricActiveModulesCount");
+                const textAttendanceMetric = document.getElementById("metricAttendanceTextValue");
+                const visualProgressCircleFill = document.getElementById("animatedMetricsRing");
+
+                if (enrollmentConfirmedFlag === "true") {
+                    // Update header dashboard metrics values fields natively
+                    modulesCounterMetric.textContent = "03";
+                    textAttendanceMetric.textContent = "88%";
+                    
+                    // Animate SVG graphic vector arcs values parameters properties formulas
+                    const circleCircumference = 2 * Math.PI * 25; // 157px dash perimeter bounds
+                    const targetStrokeOffsetVal = circleCircumference - (88 / 100) * circleCircumference;
+                    visualProgressCircleFill.style.strokeDashoffset = targetStrokeOffsetVal;
+
+                    if (activeTabId === "panel-schedule") {
+                        dynamicTargetCanvas.innerHTML = `
+                            <div class="table-responsive animate-fadeIn">
+                                <table class="table table-modern-viewport align-middle mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Program Code</th>
+                                            <th>Course Descriptor Name</th>
+                                            <th>Assigned Faculty</th>
+                                            <th>Duration Blocks</th>
+                                            <th>Facility Location</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${dailyClassScheduleDataset.map(courseItem => `
+                                            <tr>
+                                                <td class="fw-bold font-monospace text-primary">${courseItem.code}</td>
+                                                <td class="fw-semibold">${courseItem.name}</td>
+                                                <td class="text-secondary">${courseItem.instructor}</td>
+                                                <td><span class="text-dark fw-medium"><i class="far fa-calendar-clock me-2 text-muted"></i>${courseItem.duration}</span></td>
+                                                <td><span class="badge bg-light text-secondary border px-3 py-2">${courseItem.hall}</span></td>
+                                            </tr>
+                                        `).join('')}
+                                    </tbody>
+                                </table>
+                            </div>`;
+                    } else if (activeTabId === "panel-assignments") {
+                        dynamicTargetCanvas.innerHTML = `
+                            <div class="p-3 animate-fadeIn">
+                                <div class="d-flex align-items-center justify-content-between p-3 border rounded-4 mb-2 bg-light bg-opacity-25">
+                                    <div>
+                                        <h6 class="fw-bold mb-1">Mini Project Submission: Python Systems REST API Mockup</h6>
+                                        <small class="text-danger fw-semibold"><i class="far fa-triangle-exclamation me-1"></i>Closing in 2 days</small>
+                                    </div>
+                                    <button class="btn btn-primary btn-sm rounded-3 px-3">Upload File</button>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between p-3 border rounded-4 bg-light bg-opacity-25">
+                                    <div>
+                                        <h6 class="fw-bold mb-1">Database Schema Diagrams Mapping Lab Assignment Sheet</h6>
+                                        <small class="text-muted">Closing in 5 days &bull; Normal Priority</small>
+                                    </div>
+                                    <button class="btn btn-outline-secondary btn-sm rounded-3 px-3">Submit</button>
+                                </div>
+                            </div>`;
+                    }
+                } else {
+                    // Nullify operational tracking system counts parameters elements 
+                    modulesCounterMetric.textContent = "00";
+                    textAttendanceMetric.textContent = "0%";
+                    visualProgressCircleFill.style.strokeDashoffset = "157";
+
+                    dynamicTargetCanvas.innerHTML = `
+                        <div class="state-empty-wrapper animate-fadeIn shadow-sm">
+                            <div class="state-empty-icon"><i class="fas fa-layer-group"></i></div>
+                            <h5 class="fw-bold text-dark mb-2">No Course Enrollments Activated</h5>
+                            <p class="text-muted mb-4 mx-auto" style="max-width: 480px;">
+                                Your profile data isn't assigned to any classroom partitions or course lecture sequences for the ongoing academic term. Complete your validation registration step to start mapping logs.
+                            </p>
+                            <button class="btn btn-primary px-4 py-2 fw-semibold border-0 shadow-sm" id="actionProcessEnrollmentTrigger" style="border-radius:12px; background:var(--brand-gradient);">
+                                Initialize Course Selection Matrix
+                            </button>
+                        </div>`;
+
+                    document.getElementById("actionProcessEnrollmentTrigger").addEventListener("click", completeStudentRegistrationAction);
+                }
+            }
+
+            function completeStudentRegistrationAction() {
+                if (confirm("Confirm Academic Selection: Do you wish to register for the current semester's core curriculum syllabus modules?")) {
+                    localStorage.setItem("studentEnrollmentConfirmed", "true");
+                    evaluateWorkspaceContextDisplay();
+                }
+            }
+
+            // Bind workspace internal interface navigation tabs controller systems elements trigger properties
+            document.getElementById("workspaceOperationalTabsController").addEventListener("click", (event) => {
+                const targetBtn = event.target.closest(".tab-trigger");
+                if (!targetBtn) return;
+
+                document.querySelectorAll(".tab-trigger").forEach(btn => btn.classList.remove("active"));
+                targetBtn.classList.add("active");
+
+                activeTabId = targetBtn.getAttribute("data-target");
+                evaluateWorkspaceContextDisplay();
+            });
+
+            // Launch custom interactive GPA analytical statement display popup logic module
+            const bootstrapGpaModalInstance = new bootstrap.Modal(document.getElementById("gpaStatementDetailsModal"));
+            document.getElementById("triggerGpaWidgetAction").addEventListener("click", () => {
+                bootstrapGpaModalInstance.show();
+            });
+
+            document.getElementById("sidebarCoursesLink").addEventListener("click", (e) => {
+                e.preventDefault();
+                completeStudentRegistrationAction();
+            });
+
+            document.getElementById("portalLogoutAction").addEventListener("click", (e) => {
+                e.preventDefault();
+                if (confirm("Are you certain you want to close this secure workspace tracking session interface?")) {
+                    localStorage.removeItem("activeStudentSession");
+                    window.location.replace("student-login.html");
+                }
+            });
+
+            // Start lifecycle rendering loop actions pipeline execution sequences
+            evaluateWorkspaceContextDisplay();
+        });
+    </script>
+</body>
+</html>

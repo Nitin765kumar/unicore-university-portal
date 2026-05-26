@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNICORE University | Excellence in Ayodhya</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+            --warning-gradient: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+            --primary-color: #0d6efd;
+            --secondary-color: #495057;
+            --light-bg: #f8f9fa;
+            --dark-text: #212529;
+            --accent-yellow: #ffc107;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-text);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6, .navbar-brand {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Fixed Top Upgraded Navbar */
+        .navbar {
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand span {
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        .navbar-brand:hover span {
+            color: #6610f2;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #6610f2 !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -2px;
+            left: 50%;
+            background: var(--primary-gradient);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 80%;
+        }
+
+        .btn-portal-nav {
+            border: 2px solid #0d6efd;
+            color: #0d6efd !important;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-portal-nav:hover {
+            background: var(--primary-gradient);
+            color: white !important;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(102, 16, 242, 0.3);
+            transform: translateY(-2px);
+        }
+        /* Removes default dropdown arrow to keep the pill button shape clean */
+.btn-portal-nav.dropdown-toggle::after {
+    display: none !important;
+}
+
+/* Smooth micro-interaction for dropdown items */
+.dropdown-menu .dropdown-item {
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.15s ease;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #f8fafc;
+    color: #0f172a !important;
+}
+
+        .btn-apply {
+            background: var(--primary-gradient);
+            color: white !important;
+            border-radius: 50px;
+            padding: 8px 24px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-apply:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(13, 110, 253, 0.4);
+            opacity: 0.95;
+        }
+
+        /* Hero Layout Modifiers */
+        .hero-section {
+            padding-top: 140px;
+            padding-bottom: 100px;
+        }
+
+        .btn-hero-primary {
+            background: var(--primary-gradient);
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(13, 110, 253, 0.5);
+        }
+
+        .btn-hero-outline:hover {
+            background: white;
+            color: #0f172a !important;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
+        }
+
+        .tracking-wider {
+            letter-spacing: 1.5px;
+        }
+
+        /* Program Cards Engine */
+        .program-card {
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .program-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .program-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+        }
+
+        .program-card img {
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .program-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .btn-card-explore {
+            transition: all 0.3s ease;
+        }
+
+        .program-card:hover .btn-card-explore {
+            background: var(--primary-gradient);
+            color: white !important;
+            border-color: transparent;
+        }
+
+        /* ================= OUR EDUCATIONAL FRAMEWORK CARDS ================= */
+        .why-choose-row .bg-light {
+            position: relative;
+            background-color: #ffffff !important; /* Base white background */
+            border: 1px solid #eef2f6 !important;
+            z-index: 1;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            overflow: hidden;
+        }
+
+        /* Subtle glowing border accent behind cards on hover */
+        .why-choose-row:hover .bg-light {
+            transform: translateY(-8px);
+            border-color: transparent !important;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        /* Sliding colorful background reveal from the bottom */
+        .why-choose-row .bg-light::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            transition: top 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* Individual unique colors for each framework pillar */
+        .why-choose-row:nth-child(1) .bg-light::before { background: linear-gradient(135deg, #0d6efd 0%, #1e40af 100%); } /* Royal Blue */
+        .why-choose-row:nth-child(2) .bg-light::before { background: linear-gradient(135deg, #6610f2 0%, #4c1d95 100%); } /* Neon Purple */
+        .why-choose-row:nth-child(3) .bg-light::before { background: linear-gradient(135deg, #00c4b4 0%, #0f766e 100%); } /* Tech Teal */
+
+        .why-choose-row:hover .bg-light::before {
+            top: 0; /* Slides the background up over the card container */
+        }
+
+        /* Standard Icon Box */
+        .icon-square {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background-color: rgba(13, 110, 253, 0.06) !important;
+            color: var(--primary-color) !important;
+            transition: all 0.4s ease;
+        }
+
+        /* Smooth text & icon transitions into high-contrast white on hover */
+        .why-choose-row:hover h4 {
+            color: #ffffff !important;
+        }
+
+        .why-choose-row:hover p {
+            color: rgba(255, 255, 255, 0.85) !important;
+        }
+
+        .why-choose-row:hover .icon-square {
+            background-color: rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+        }
+
+        /* Distinct Brand Hover Illumination Colors */
+        .tech-col:nth-child(1) .tech-badge:hover { color: #2b5b84; border-color: #2b5b84; box-shadow: 0 8px 20px rgba(43, 91, 132, 0.2); transform: translateY(-5px); }
+        .tech-col:nth-child(2) .tech-badge:hover { color: #f7df1e; border-color: #f7df1e; box-shadow: 0 8px 20px rgba(247, 223, 30, 0.2); transform: translateY(-5px); }
+        .tech-col:nth-child(3) .tech-badge:hover { color: #00c4b4; border-color: #00c4b4; box-shadow: 0 8px 20px rgba(0, 196, 180, 0.2); transform: translateY(-5px); }
+        .tech-col:nth-child(4) .tech-badge:hover { color: #336791; border-color: #336791; box-shadow: 0 8px 20px rgba(51, 103, 145, 0.2); transform: translateY(-5px); }
+        .tech-col:nth-child(5) .tech-badge:hover { color: #7952b3; border-color: #7952b3; box-shadow: 0 8px 20px rgba(121, 82, 179, 0.2); transform: translateY(-5px); }
+        .tech-col:nth-child(6) .tech-badge:hover { color: #333333; border-color: #333333; box-shadow: 0 8px 20px rgba(51, 51, 51, 0.2); transform: translateY(-5px); }
+
+        /* Conversion CTA Button Colors */
+        .btn-cta-warning {
+            background: var(--warning-gradient);
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta-warning:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(253, 126, 20, 0.4);
+            color: white !important;
+        }
+
+        /* Footer Aesthetics */
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+        }
+
+        footer h5 span {
+            color: var(--primary-color);
+        }
+
+        .footer-links a {
+            transition: color 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff !important;
+            padding-left: 6px;
+        }
+
+        .social-links a {
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-4px) scale(1.1);
+        }
+        
+        .social-links a.link-linkedin:hover { background: #0077b5; box-shadow: 0 4px 15px rgba(0, 119, 181, 0.4); }
+        .social-links a.link-github:hover { background: #333; box-shadow: 0 4px 15px rgba(51, 51, 51, 0.4); }
+        .social-links a.link-instagram:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); box-shadow: 0 4px 15px rgba(220, 39, 67, 0.4); }
+        .social-links a.link-youtube:hover { background: #ff0000; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4); }
+    </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg fixed-top transition bg-white shadow-sm" id="mainNavbar">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-dark fs-3" href="index.html">UNI<span>CORE</span></a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item px-2"><a class="nav-link text-dark active" href="index.html">Home</a></li>
+                <li class="nav-item px-2"><a class="nav-link text-dark" href="about.html">About</a></li>
+                <li class="nav-item px-2"><a class="nav-link text-dark" href="programs.html">Programs</a></li>
+                <li class="nav-item px-2"><a class="nav-link text-dark" href="faculty.html">Faculty</a></li>
+                <li class="nav-item px-2"><a class="nav-link text-dark" href="placements.html">Placements</a></li>
+                <li class="nav-item px-2"><a class="nav-link text-dark" href="gallery.html">Gallery</a></li>
+                <li class="nav-item px-2"><a class="nav-link text-dark" href="admissions.html">Admissions</a></li>
+                <li class="nav-item px-2"><a class="nav-link text-dark" href="contact.html">Contact</a></li>
+                
+                <!-- Transformed Portal Button into a Multi-Portal Dropdown -->
+                <li class="nav-item dropdown ms-lg-2 me-2">
+                    <a class="btn btn-portal-nav rounded-pill px-4 btn-sm py-2 dropdown-toggle" href="#" id="portalDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-university me-2"></i>Portals
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end border-0 shadow-md rounded-3 p-2 mt-2" aria-labelledby="portalDropdown" style="min-width: 210px;">
+                        <!-- Student Section -->
+                        <li><h6 class="dropdown-header text-uppercase text-muted tracking-wider font-monospace" style="font-size: 0.7rem;">Academics</h6></li>
+                        <li><a class="dropdown-item rounded-2 py-2 mb-1" href="student-login.html"><i class="fas fa-user-graduate me-2 text-primary"></i>Student Portal</a></li>
+                        
+                        <li><hr class="dropdown-divider my-2"></li>
+                        
+                        <!-- Admin Section -->
+                        <li><h6 class="dropdown-header text-uppercase text-muted tracking-wider font-monospace" style="font-size: 0.7rem;">Management</h6></li>
+                        <li><a class="dropdown-item rounded-2 py-2 mb-1" href="admin-login.html"><i class="fas fa-lock-open me-2 text-danger"></i>Admin Console</a></li>
+                        <li><a class="dropdown-item rounded-2 py-2 text-muted small" href="admin/admin-register.html"><i class="fas fa-user-plus me-2"></i>Register Admin</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item"><a class="btn btn-apply" href="admissions.html">Apply Now</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <section class="hero-section d-flex align-items-center position-relative overflow-hidden" style="background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('https://images.unsplash.com/photo-1541339907198-e08759df9a73?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; min-height: 100vh;">
+        <div class="container text-center text-white position-relative" style="z-index: 2;">
+            <span class="badge bg-primary px-3 py-2 mb-4 text-uppercase tracking-wider rounded-pill">Top-Ranked University in UP</span>
+            <h1 class="display-2 fw-bold mb-4 tracking-tight">Empowering Minds <br><span class="text-warning">Enriching Futures</span></h1>
+            <p class="lead mb-5 mx-auto opacity-90" style="max-width: 750px; font-size: 1.2rem; line-height: 1.8;">
+                Join a dynamic community of innovators, web developers, and future corporate leaders in Ayodhya. We bridge technical academics with advanced tier-1 industry placement capabilities.
+            </p>
+            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                <a href="admissions.html" class="btn btn-hero-primary btn-lg px-5 py-3 rounded-pill fw-bold text-white shadow-lg">Apply for Session 2026</a>
+                <a href="programs.html" class="btn btn-outline-light btn-hero-outline btn-lg px-5 py-3 rounded-pill fw-bold">
+                    <i class="fas fa-th-large me-2"></i>Explore Programs
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-4 position-relative" style="margin-top: -60px; z-index: 10;">
+        <div class="container">
+            <div class="bg-white shadow border p-4 rounded-4" style="width: 95%; margin: 0 auto;">
+                <div class="row text-center g-4">
+                    <div class="col-6 col-md-3 border-end">
+                        <h2 class="fw-bold text-primary display-5 mb-1">15k+</h2>
+                        <p class="text-muted fw-semibold small text-uppercase tracking-wider mb-0">Alumni Worldwide</p>
+                    </div>
+                    <div class="col-6 col-md-3 border-end">
+                        <h2 class="fw-bold text-primary display-5 mb-1">200+</h2>
+                        <p class="text-muted fw-semibold small text-uppercase tracking-wider mb-0">Certified Courses</p>
+                    </div>
+                    <div class="col-6 col-md-3 border-end">
+                        <h2 class="fw-bold text-primary display-5 mb-1">98%</h2>
+                        <p class="text-muted fw-semibold small text-uppercase tracking-wider mb-0">Placement Rate</p>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <h2 class="fw-bold text-primary display-5 mb-1">50+</h2>
+                        <p class="text-muted fw-semibold small text-uppercase tracking-wider mb-0">Global Partners</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 mt-4">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h6 class="text-primary fw-bold text-uppercase tracking-wider">Methodology</h6>
+                <h2 class="fw-bold display-6">Our Educational Framework</h2>
+                <div class="mx-auto bg-warning mb-3" style="height: 3px; width: 60px;"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4 why-choose-row">
+                    <div class="p-4 border border-light bg-light rounded-4 h-100 transition shadow-sm">
+                        <div class="icon-square mb-3"><i class="fas fa-graduation-cap fs-4"></i></div>
+                        <h4 class="fw-bold mb-2 h5">Experiential Learning</h4>
+                        <p class="text-secondary small mb-0">We ditch conventional rote system methods. Core evaluation vectors are built around real production apps and dynamic micro-modules.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 why-choose-row">
+                    <div class="p-4 border border-light bg-light rounded-4 h-100 transition shadow-sm">
+                        <div class="icon-square mb-3"><i class="fas fa-code fs-4"></i></div>
+                        <h4 class="fw-bold mb-2 h5">Modern Tech Stack Hubs</h4>
+                        <p class="text-secondary small mb-0">Gain functional knowledge mapping terminal software. Graduate fully equipped to handle agile development sprints seamlessly from day one.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 why-choose-row">
+                    <div class="p-4 border border-light bg-light rounded-4 h-100 transition shadow-sm">
+                        <div class="icon-square mb-3"><i class="fas fa-briefcase fs-4"></i></div>
+                        <h4 class="fw-bold mb-2 h5">Placement Ingestion</h4>
+                        <p class="text-secondary small mb-0">Continuous mock interview diagnostics, live resume engineering, and exclusive recruitment portal matching vectors guarantee placement success.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs" class="py-5 bg-light">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h6 class="text-primary fw-bold text-uppercase tracking-wider">Academic Excellence</h6>
+                <h2 class="display-5 fw-bold">Featured Programs</h2>
+                <div class="mx-auto bg-warning" style="height: 3px; width: 80px;"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm program-card overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Computer Applications">
+                        </div>
+                        <div class="card-body p-4 text-center d-flex flex-column justify-content-between">
+                            <div>
+                                <h4 class="fw-bold mb-3 h5">Computer Applications</h4>
+                                <p class="text-secondary small mb-4">Master Python backend layers, robust front-end layout configurations, and OpenCV deep learning frameworks inside our tech-forward BCA laboratories.</p>
+                            </div>
+                            <div>
+                                <a href="programs.html?course=bca" class="btn btn-outline-primary btn-card-explore rounded-pill px-4 btn-sm">Explore Dynamic Syllabus</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm program-card overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Business Management">
+                        </div>
+                        <div class="card-body p-4 text-center d-flex flex-column justify-content-between">
+                            <div>
+                                <h4 class="fw-bold mb-3 h5">Business Management</h4>
+                                <p class="text-secondary small mb-4">Developing industry leaders through practical market operations validation case studies, agile frameworks, and global trade strategy patterns.</p>
+                            </div>
+                            <div>
+                                <a href="programs.html?course=bba" class="btn btn-outline-primary btn-card-explore rounded-pill px-4 btn-sm">Explore Dynamic Syllabus</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mx-auto">
+                    <div class="card h-100 border-0 shadow-sm program-card overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Science & Research">
+                        </div>
+                        <div class="card-body p-4 text-center d-flex flex-column justify-content-between">
+                            <div>
+                                <h4 class="fw-bold mb-3 h5">Science & Research</h4>
+                                <p class="text-secondary small mb-4">Pushing computational boundaries using modern quantitative analytics models alongside top-tier research methodologies.</p>
+                            </div>
+                            <div>
+                                <a href="programs.html" class="btn btn-outline-primary btn-card-explore rounded-pill px-4 btn-sm">Explore Dynamic Syllabus</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <h2 class="display-5 fw-bold mb-4">Why Choose <br>UNICORE University?</h2>
+                    <p class="text-secondary mb-4 lead" style="font-size: 1.05rem;">We provide an education engineered to transcend traditional static methodologies, ensuring students meet precise professional market metrics.</p>
+                    
+                    <div class="d-flex mb-4 why-choose-row">
+                        <div class="icon-square me-3">
+                            <i class="fas fa-laptop-code fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Industry-Driven Curriculum</h5>
+                            <p class="text-muted small mb-0">Syllabus modules modeled alongside tech ecosystems and active corporate functional stacks.</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex mb-4 why-choose-row">
+                        <div class="icon-square me-3">
+                            <i class="fas fa-map-marker-alt fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Ayodhya's Modern Knowledge Hub</h5>
+                            <p class="text-muted small mb-0">Study in the heart of Ayodhya with structured access to evolving technological and industrial opportunities.</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex why-choose-row">
+                        <div class="icon-square me-3">
+                            <i class="fas fa-user-tie fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Personalized Engineering Mentorship</h5>
+                            <p class="text-muted small mb-0">Direct support architecture helping optimize web profiles, git pipelines, and interview profiles.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="position-relative mx-auto" style="max-width: 500px;">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" class="img-fluid rounded-4 shadow-lg" alt="Student Collaboration">
+                        <div class="bg-primary text-white p-4 rounded-3 shadow position-absolute bottom-0 start-0 m-4 d-none d-md-block" style="max-width: 260px; --bs-bg-opacity: 0.95;">
+                            <p class="mb-2 fw-semibold lh-sm italic" style="font-size: 0.9rem;">"UNICORE transformed my technical skills and career outlook."</p>
+                            <small class="opacity-75">- Alumnus 2025</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light border-top border-bottom">
+        <div class="container py-3">
+            <div class="text-center mb-5">
+                <h6 class="text-primary fw-bold text-uppercase tracking-wider">Skill Mapping</h6>
+                <h2 class="fw-bold mb-2">Core Technical Stack Covered</h2>
+                <p class="text-muted small">Students achieve working capabilities across contemporary technical deployment architectures.</p>
+            </div>
+            <div class="row g-3 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 justify-content-center">
+                <div class="col tech-col"><div class="tech-badge"><i class="fab fa-python fs-4 text-primary"></i> Python AI</div></div>
+                <div class="col tech-col"><div class="tech-badge"><i class="fab fa-js-square fs-4 text-warning"></i> JavaScript</div></div>
+                <div class="col tech-col"><div class="tech-badge"><i class="fas fa-cubes fs-4 text-info"></i> Flask Core</div></div>
+                <div class="col tech-col"><div class="tech-badge"><i class="fas fa-database fs-4 text-secondary"></i> SQL/SQLite</div></div>
+                <div class="col tech-col"><div class="tech-badge"><i class="fab fa-bootstrap fs-4" style="color: #7952b3;"></i> Bootstrap</div></div>
+                <div class="col tech-col"><div class="tech-badge"><i class="fab fa-github fs-4 text-dark"></i> Git Pipelines</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-primary text-white text-center shadow-inner position-relative">
+        <div class="container py-4">
+            <h2 class="display-6 fw-bold mb-3">Ready to Start Your Journey?</h2>
+            <p class="mb-4 opacity-90 mx-auto" style="max-width: 600px;">Admissions protocols for the 2026 academic terminal session are currently active. Secure your space inside the active tech cohort loop today.</p>
+            <a href="admissions.html" class="btn btn-cta-warning btn-lg px-5 rounded-pill fw-bold text-dark shadow">Apply Online Now <i class="fas fa-arrow-right ms-2 small"></i></a>
+        </div>
+    </section>
+
+    <!-- =================================================================
+     INTEGRATED CAMPUS FOOTER SECTION
+================================================================== -->
+<footer class="pt-5 pb-3 bg-dark text-white">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Brand & Social Column -->
+            <div class="col-lg-4 col-md-6">
+                <h5 class="fw-bold mb-4 text-white">UNI<span class="text-primary">CORE</span></h5>
+                <p class="small opacity-75 lh-lg">
+                    Empowering students through innovation, clean web development logic, and technical structural proficiency. Our Ayodhya campus offers high-tier laboratory environments built for modern tech execution.
+                </p>
+                <div class="social-links d-flex gap-3 mt-4">
+                    <a href="https://linkedin.com/in/nitinkumar25" target="_blank" class="text-white link-linkedin opacity-75 hover-opacity-100"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Nitin765kumar" target="_blank" class="text-white link-github opacity-75 hover-opacity-100"><i class="fab fa-github"></i></a>
+                    <a href="https://instagram.com/nitinkumar812719" target="_blank" class="text-white link-instagram opacity-75 hover-opacity-100"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/@nitinkumar8487" target="_blank" class="text-white link-youtube opacity-75 hover-opacity-100"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links Column -->
+            <div class="col-lg-2 col-md-6">
+                <h5 class="fw-semibold mb-4 text-white small text-uppercase tracking-wider">Quick Links</h5>
+                <ul class="list-unstyled footer-links small">
+                    <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none hover-link">Home Link</a></li>
+                    <li class="mb-2"><a href="about.html" class="text-white-50 text-decoration-none hover-link">About Us</a></li>
+                    <li class="mb-2"><a href="admissions.html" class="text-white-50 text-decoration-none hover-link">Admissions</a></li>
+                    <li class="mb-2"><a href="contact.html" class="text-white-50 text-decoration-none hover-link">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Legal & Internal Nodes Column -->
+            <div class="col-lg-2 col-md-6">
+                <h5 class="fw-semibold mb-4 text-white small text-uppercase tracking-wider">Legal & Notes</h5>
+                <ul class="list-unstyled footer-links small">
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-link" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-link" data-bs-toggle="modal" data-bs-target="#termsModal">Terms & Conditions</a></li>
+                    <li class="mb-2"><a href="programs.html?course=bca" class="text-white-50 text-decoration-none hover-link">BCA Study Notes</a></li>
+                    <li class="mb-2"><a href="student-login.html" class="text-white-50 text-decoration-none hover-link">Student Portal</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact & Geo Coordinates Column -->
+            <div class="col-lg-4 col-md-6">
+                <h5 class="fw-semibold mb-4 text-white small text-uppercase tracking-wider">Visit Us</h5>
+                <ul class="list-unstyled text-white-50 small">
+                    <li class="mb-3 d-flex align-items-start">
+                        <i class="fas fa-map-marker-alt text-primary me-3 mt-1"></i>
+                        <span>UNICORE University,Ayodhya, <br>Uttar Pradesh, India</span>
+                    </li>
+                    <li class="mb-3 d-flex align-items-center">
+                        <i class="fas fa-envelope text-primary me-3"></i>
+                        <span>nitinkumar812719@gmail.com</span>
+                    </li>
+                    <li class="d-flex align-items-center">
+                        <i class="fas fa-phone-alt text-primary me-3"></i>
+                        <span>+91 8127193396</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="my-4 border-secondary opacity-25">
+        
+        <div class="row align-items-center">
+            <div class="col-md-12 text-center">
+                <p class="small text-white-50 mb-0">
+                    &copy; 2026 UNICORE University. All Rights Reserved. | Crafted with <i class="fas fa-heart text-danger mx-1"></i> by <span class="text-white fw-bold">Nitin Kumar</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- =================================================================
+     COMPLIANCE MODALS OBJECTIVE CONTAINERS
+================================================================== -->
+
+<!-- Privacy Policy Modal Overlay Container -->
+<div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+            <div class="modal-header bg-light border-bottom px-4 py-3">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="bg-primary-subtle text-primary px-2 py-1 rounded-2" style="font-size: 0.9rem;">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div>
+                        <h5 class="modal-title fw-bold text-dark mb-0" id="privacyModalLabel">Privacy &amp; Data Protection Policy</h5>
+                        <small class="text-muted font-monospace d-block" style="font-size: 0.65rem;">UNICORE SYSTEM INDEX: SEC-2026-V1</small>
+                    </div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-4 py-4 style-modal-scrollbar" style="font-size: 0.88rem; line-height: 1.6; color: #334155;">
+                <p class="text-muted small mb-3"><strong>Effective Version Frame:</strong> May 2026</p>
+                
+                <h6 class="fw-bold text-dark mb-2">1. Information Governance and Scope</h6>
+                <p class="mb-3">This Privacy Policy details the strict architectural boundaries under which UNICORE University handles personal identity indicators, session vectors, and academic performance data. By interfacing with our student terminal setups, you consent to data practices described herein.</p>
+
+                <h6 class="fw-bold text-dark mb-2">2. Data Capture Pipelines</h6>
+                <p class="mb-2">Our applications explicitly parse data into three operational matrices:</p>
+                <ul class="ps-3 mb-3">
+                    <li><strong>Academic Metrics:</strong> Class logs, core Python/Web pipeline progress matrices, and evaluation notes.</li>
+                    <li><strong>Authentication Profiles:</strong> Local storage indices containing verified user profiles, email hashes, and administrative credential mappings.</li>
+                    <li><strong>Telemetry Data:</strong> Explicit logging of access timestamps, routing IPv4/v6 structures, and interface render bugs to guarantee application security.</li>
+                </ul>
+
+                <h6 class="fw-bold text-dark mb-2">3. Storage Safety & Persistent Tokens</h6>
+                <p class="mb-0">Session indexes are stored securely within your active client framework (such as <code>localStorage</code> arrays used across the dashboard engines). No data pipelines are sold or shared with third-party analytical syndicates. Access is monitored strictly via encrypted authentication routes.</p>
+            </div>
+            <div class="modal-footer border-top px-4 py-2 bg-light d-flex justify-content-between align-items-center">
+                <span class="text-muted font-monospace" style="font-size: 0.7rem;"><i class="fas fa-lock me-1"></i> Secured via local validation layers</span>
+                <button type="button" class="btn btn-dark btn-sm px-4 rounded-pill fw-semibold" data-bs-dismiss="modal">Acknowledge</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Terms & Conditions Modal Overlay Container -->
+<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+            <div class="modal-header bg-light border-bottom px-4 py-3">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="bg-danger-subtle text-danger px-2 py-1 rounded-2" style="font-size: 0.9rem;">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <div>
+                        <h5 class="modal-title fw-bold text-dark mb-0" id="termsModalLabel">Terms &amp; System Conditions</h5>
+                        <small class="text-muted font-monospace d-block" style="font-size: 0.65rem;">UNICORE SYSTEM INDEX: TOS-2026-V1</small>
+                    </div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-4 py-4 style-modal-scrollbar" style="font-size: 0.88rem; line-height: 1.6; color: #334155;">
+                <p class="text-muted small mb-3"><strong>System Governance Framework:</strong> Operational as of 2026</p>
+                
+                <h6 class="fw-bold text-dark mb-2">1. System Access Parameters</h6>
+                <p class="mb-3">Authorized access to the UNICORE Student Console or Admin Control Tower requires authentic, uncompromised registration paths. Any script injection, reverse engineering of local data arrays, or credential forge attempts will lead to an immediate ban from the system.</p>
+
+                <h6 class="fw-bold text-dark mb-2">2. Profile & Cryptographic Keys Safety</h6>
+                <p class="mb-3">Operators and students assume exclusive responsibility for maintaining secure credentials across their browsers. System configurations mutated via active tokens or session payloads are legally bound to the profile keyholder.</p>
+
+                <h6 class="fw-bold text-dark mb-2">3. Intellectual Assets & Syllabus Controls</h6>
+                <p class="mb-0">All clean code components, visual assets, responsive structures, database design tables, and digital study notes published within this ecosystem are the proprietary intellectual property of UNICORE. Unauthorized mirroring or automated extraction of content is strictly prohibited.</p>
+            </div>
+            <div class="modal-footer border-top px-4 py-2 bg-light d-flex justify-content-between align-items-center">
+                <span class="text-muted font-monospace" style="font-size: 0.7rem;"><i class="fas fa-exclamation-triangle me-1"></i> Violations trigger academic profile termination</span>
+                <button type="button" class="btn btn-dark btn-sm px-4 rounded-pill fw-semibold" data-bs-dismiss="modal">Accept Terms</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

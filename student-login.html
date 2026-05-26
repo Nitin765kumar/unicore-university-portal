@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login | UNICORE University</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f7fb;
+        }
+
+        .login-section {
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(0, 33, 71, 0.85), rgba(0, 33, 71, 0.9)),
+                url('https://images.unsplash.com/photo-1523050853063-bd8012fec046?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 60px;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 480px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 28px;
+            padding: 45px;
+            color: white;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .login-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .form-control {
+            height: 55px;
+            border-radius: 14px;
+            border: none;
+            padding-left: 18px;
+            font-size: 15px;
+        }
+
+        /* Adjust border radius when combined with append/prepend add-ons */
+        .input-group .form-control {
+            border-top-left-radius: 0 !important;
+            border-bottom-left-radius: 0 !important;
+            border-top-right-radius: 14px !important;
+            border-bottom-right-radius: 14px !important;
+        }
+
+        /* Handle custom password visibility layout wrapper */
+        .input-group .password-control-field {
+            border-top-right-radius: 0 !important;
+            border-bottom-right-radius: 0 !important;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+
+        .input-group-text {
+            border: none;
+            background: white;
+            color: #475569;
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+
+        .input-group-text.start-addon {
+            border-radius: 14px 0 0 14px;
+        }
+
+        .input-group-text.toggle-addon {
+            border-radius: 0 14px 14px 0;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .input-group-text.toggle-addon:hover {
+            color: #0d6efd;
+        }
+
+        .btn-login {
+            height: 55px;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 16px;
+            background: linear-gradient(135deg, #0d6efd, #0047b3);
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(13, 110, 253, 0.3);
+        }
+
+        .login-link {
+            color: #ffd166;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-link:hover {
+            color: white;
+        }
+
+        .brand-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .brand-logo span {
+            color: #0d6efd;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand brand-logo text-dark" href="index.html">
+                UNI<span>CORE</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="programs.html">Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a href="student-register.html" class="btn btn-primary rounded-pill px-4">
+                            Register
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Section -->
+    <section class="login-section">
+        <div class="login-card">
+            <div class="text-center mb-4">
+                <span class="badge bg-warning text-dark px-3 py-2 rounded-pill mb-3">
+                    Student Portal
+                </span>
+                <h1 class="login-title mb-2">Welcome Back</h1>
+                <p class="text-white-50">
+                    Access your dashboard, syllabus, notes and academic resources.
+                </p>
+            </div>
+
+            <!-- Login Form -->
+            <form id="studentLoginForm">
+                <!-- Email -->
+                <div class="mb-4">
+                    <label class="form-label fw-semibold mb-2" for="loginEmail">
+                        Your Email
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-text start-addon">
+                            <i class="fas fa-envelope text-primary"></i>
+                        </span>
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            class="form-control"
+                            placeholder="Enter your email"
+                            required>
+                    </div>
+                </div>
+
+                <!-- Password with integrated Visibility feature -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold mb-2" for="loginPassword">
+                        Password
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-text start-addon">
+                            <i class="fas fa-lock text-primary"></i>
+                        </span>
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            class="form-control password-control-field"
+                            placeholder="Enter password"
+                            required>
+                        <span class="input-group-text toggle-addon" id="passwordToggleBtn">
+                            <i class="fas fa-eye" id="toggleIcon"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Options -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="form-check">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="rememberMe">
+                        <label class="form-check-label small" for="rememberMe">
+                            Remember Me
+                        </label>
+                    </div>
+                    <a href="#" class="small login-link">
+                        Forgot Password?
+                    </a>
+                </div>
+
+                <!-- Button -->
+                <button
+                    type="submit"
+                    id="loginBtn"
+                    class="btn btn-login btn-primary w-100 mb-4">
+                    <i class="fas fa-sign-in-alt me-2"></i>
+                    Login to Dashboard
+                </button>
+
+                <!-- Register Navigation Link -->
+                <div class="text-center">
+                    <p class="small text-white-50 mb-0">
+                        New Student?
+                        <a href="student-register.html" class="login-link">
+                            Create Account
+                        </a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="small opacity-75 mb-0">
+                © 2026 UNICORE University. Developed by Nitin Kumar
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- Runtime Client Auth Script Block -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const loginForm = document.getElementById("studentLoginForm");
+            const passwordField = document.getElementById("loginPassword");
+            const passwordToggleBtn = document.getElementById("passwordToggleBtn");
+            const toggleIcon = document.getElementById("toggleIcon");
+
+            // Password field view toggle controller
+            passwordToggleBtn.addEventListener("click", () => {
+                if (passwordField.type === "password") {
+                    passwordField.type = "text";
+                    toggleIcon.classList.remove("fa-eye");
+                    toggleIcon.classList.add("fa-eye-slash");
+                } else {
+                    passwordField.type = "password";
+                    toggleIcon.classList.remove("fa-eye-slash");
+                    toggleIcon.classList.add("fa-eye");
+                }
+            });
+
+            // Authentication Processing Engine
+            loginForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                const inputEmail = document.getElementById("loginEmail").value.trim();
+                const inputPassword = passwordField.value;
+
+                // Grab records written during student registration
+                const storedRecordRaw = localStorage.getItem("registeredStudent");
+
+                if (!storedRecordRaw) {
+                    alert("Authentication Failure: No matching student registration profile found on this server. Please create an account.");
+                    return;
+                }
+
+                const studentProfileInstance = JSON.parse(storedRecordRaw);
+
+                // Authenticate matching credential parameters
+                if (inputEmail === studentProfileInstance.email && inputPassword === studentProfileInstance.password) {
+                    
+                    // Create an explicit active session tracking structure for the dashboard context logic
+                    const sessionData = {
+                        authenticated: true,
+                        fullName: studentProfileInstance.fullName,
+                        major: studentProfileInstance.major,
+                        email: studentProfileInstance.email,
+                        timestamp: new Date().getTime()
+                    };
+                    
+                    localStorage.setItem("activeStudentSession", JSON.stringify(sessionData));
+                    
+                    alert("Verification successful. Redirecting to your student academic workspace...");
+                    window.location.href = "student-dashboard.html";
+                } else {
+                    alert("Invalid Credentials: The email configuration or password sequence provided is incorrect.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

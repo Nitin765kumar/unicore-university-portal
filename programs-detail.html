@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Details | UNICORE University</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #495057;
+            --light-bg: #f8f9fa;
+            --dark-text: #212529;
+            --accent-green: #198754;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-text);
+            background-color: #ffffff;
+            scroll-behavior: smooth;
+        }
+
+        /* Hero Banner */
+        .hero-detail-section {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            padding: 90px 0;
+        }
+
+        .badge-category {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+
+        /* Sticky Navigation Bar */
+        .sub-nav {
+            position: sticky;
+            top: 0;
+            background: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            z-index: 1020;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .sub-nav .nav-link {
+            color: var(--secondary-color);
+            font-weight: 500;
+            padding: 15px 20px;
+            border-bottom: 3px solid transparent;
+        }
+        .sub-nav .nav-link:hover, .sub-nav .nav-link.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        /* Core Elements */
+        .course-meta-box {
+            background-color: var(--light-bg);
+            border-left: 4px solid var(--primary-color);
+            border-radius: 4px;
+        }
+
+        .img-cover {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        }
+
+        /* Resource Section Cards */
+        .download-card {
+            border: 1px solid #e3e6f0;
+            border-radius: 8px;
+            background: #ffffff;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .download-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        }
+
+        /* Sidebar styling */
+        .sidebar-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 80px;
+        }
+
+        /* Custom Tabs Configuration */
+        .nav-pills-custom .nav-link {
+            color: var(--dark-text);
+            background: var(--light-bg);
+            margin-right: 8px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .nav-pills-custom .nav-link.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .error-container {
+            display: none;
+            padding: 100px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="program-content">
+        
+        <section class="hero-detail-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <span class="badge-category mb-3" id="course-category">Technology</span>
+                        <h1 class="display-4 fw-bold mb-3" id="course-title">Loading Program...</h1>
+                        <p class="lead opacity-75 mb-0" id="course-short-desc">Please wait while our database processes the dynamic course profile map.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="sub-nav d-none d-md-block">
+            <div class="container">
+                <nav class="nav">
+                    <a class="nav-link" href="#overview">Overview</a>
+                    <a class="nav-link" href="#syllabus">Semester Syllabus</a>
+                    <a class="nav-link" href="#fees">Fee Structure</a>
+                    <a class="nav-link" href="#downloads">Resources & Notes</a>
+                    <a class="nav-link" href="#faq">FAQs</a>
+                </nav>
+            </div>
+        </div>
+
+        <section class="py-5">
+            <div class="container">
+                <div class="row g-5">
+                    
+                    <div class="col-lg-8">
+                        
+                        <div id="overview" class="mb-5 scroll-margin">
+                            <img id="course-image" src="" alt="Course Image" class="img-cover mb-4">
+                            
+                            <h3 class="fw-bold mb-3">Program Overview</h3>
+                            <p class="text-secondary mb-4" id="course-full-desc" style="line-height: 1.8; font-size: 1.05rem;">
+                                Operational insights loading data strings...
+                            </p>
+
+                            <div class="row g-3 p-4 mb-4 course-meta-box mx-0">
+                                <div class="col-sm-4">
+                                    <div class="fw-bold text-muted text-uppercase small">Duration</div>
+                                    <div class="fs-5 fw-bold text-dark" id="meta-duration">—</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="fw-bold text-muted text-uppercase small">Study Format</div>
+                                    <div class="fs-5 fw-bold text-dark">Full-Time Campus</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="fw-bold text-muted text-uppercase small">Eligibility</div>
+                                    <div class="fs-5 fw-bold text-dark">10+2 Secondary Cert</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-5">
+
+                        <div id="syllabus" class="mb-5">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h3 class="fw-bold m-0">Semester Syllabus Breakdown</h3>
+                                <span class="badge bg-primary rounded-pill px-3 py-2" id="semester-count">6 Semesters</span>
+                            </div>
+                            
+                            <div class="nav nav-pills nav-pills-custom mb-3" id="pills-tab" role="tablist">
+                                <button class="nav-link active" id="pill-sem1-tab" data-bs-toggle="pill" data-bs-target="#sem1" type="button" role="tab">Sem 1</button>
+                                <button class="nav-link" id="pill-sem2-tab" data-bs-toggle="pill" data-bs-target="#sem2" type="button" role="tab">Sem 2</button>
+                                <button class="nav-link" id="pill-sem3-tab" data-bs-toggle="pill" data-bs-target="#sem3" type="button" role="tab">Sem 3</button>
+                                <button class="nav-link" id="pill-sem4-tab" data-bs-toggle="pill" data-bs-target="#sem4" type="button" role="tab">Sem 4</button>
+                                <button class="nav-link" id="pill-sem5-tab" data-bs-toggle="pill" data-bs-target="#sem5" type="button" role="tab">Sem 5</button>
+                                <button class="nav-link" id="pill-sem6-tab" data-bs-toggle="pill" data-bs-target="#sem6" type="button" role="tab">Sem 6</button>
+                            </div>
+                            
+                            <div class="tab-content border p-4 rounded bg-light" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="sem1" role="tabpanel"><ul class="list-group list-group-flush" id="list-sem1"></ul></div>
+                                <div class="tab-pane fade" id="sem2" role="tabpanel"><ul class="list-group list-group-flush" id="list-sem2"></ul></div>
+                                <div class="tab-pane fade" id="sem3" role="tabpanel"><ul class="list-group list-group-flush" id="list-sem3"></ul></div>
+                                <div class="tab-pane fade" id="sem4" role="tabpanel"><ul class="list-group list-group-flush" id="list-sem4"></ul></div>
+                                <div class="tab-pane fade" id="sem5" role="tabpanel"><ul class="list-group list-group-flush" id="list-sem5"></ul></div>
+                                <div class="tab-pane fade" id="sem6" role="tabpanel"><ul class="list-group list-group-flush" id="list-sem6"></ul></div>
+                            </div>
+                        </div>
+
+                        <hr class="my-5">
+
+                        <div id="fees" class="mb-5">
+                            <h3 class="fw-bold mb-4">Academic Fee Architecture</h3>
+                            <div class="table-responsive">
+                                <table class="table table-bordered align-middle">
+                                    <thead class="table-light text-secondary small uppercase text-center">
+                                        <tr>
+                                            <th>Fee Description Component</th>
+                                            <th>Per Semester Rate</th>
+                                            <th>Annual Aggregate</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-center text-secondary">
+                                        <tr>
+                                            <td class="text-start fw-semibold text-dark">Tuition & Operational Base Fee</td>
+                                            <td id="fee-sem">₹0</td>
+                                            <td id="fee-annual">₹0</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-start fw-semibold text-dark">Laboratory Infrastructure & Computational Services</td>
+                                            <td>₹5,000</td>
+                                            <td>₹10,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-start fw-semibold text-dark">Library Resources & Digital Portals Asset Allocation</td>
+                                            <td>₹2,500</td>
+                                            <td>₹5,000</td>
+                                        </tr>
+                                        <tr class="table-info fw-bold text-dark">
+                                            <td class="text-start">Total Mandatory Cost Structure Estimate</td>
+                                            <td id="fee-sem-total">₹0</td>
+                                            <td id="fee-annual-total">₹0</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-muted small mt-2"><i class="fas fa-info-circle me-1"></i> Note: Registration deposits (₹2,500) and examination validation processing fees (₹1,500/sem) are applied at point-of-billing.</p>
+                        </div>
+
+                        <hr class="my-5">
+
+                        <div id="downloads" class="mb-5">
+                            <h3 class="fw-bold mb-4">Academic Resources & Academic Vault</h3>
+                            <div class="row g-3">
+                                
+                                <div class="col-md-6">
+                                    <div class="download-card p-3 d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <div class="fs-2 text-danger me-3"><i class="far fa-file-pdf"></i></div>
+                                            <div>
+                                                <div class="fw-bold text-dark mb-0">Official Academic Syllabus</div>
+                                                <span class="text-muted small">PDF Format • 2.4 MB</span>
+                                            </div>
+                                        </div>
+                                        <button onclick="alert('Downloading verified syllabus file payload...')" class="btn btn-sm btn-outline-primary px-3 rounded-pill"><i class="fas fa-cloud-download-alt"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="download-card p-3 d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <div class="fs-2 text-danger me-3"><i class="far fa-file-pdf"></i></div>
+                                            <div>
+                                                <div class="fw-bold text-dark mb-0">Program Prospectus Brochure</div>
+                                                <span class="text-muted small">PDF Format • 4.1 MB</span>
+                                            </div>
+                                        </div>
+                                        <button onclick="alert('Downloading Program Prospectus...')" class="btn btn-sm btn-outline-primary px-3 rounded-pill"><i class="fas fa-cloud-download-alt"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="download-card p-3 d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <div class="fs-2 text-warning me-3"><i class="far fa-folder-open"></i></div>
+                                            <div>
+                                                <div class="fw-bold text-dark mb-0">Semester 1 Core Study Material</div>
+                                                <span class="text-muted small">ZIP Archive • 18.5 MB</span>
+                                            </div>
+                                        </div>
+                                        <button onclick="alert('Accessing localized cloud repository token for Sem 1 Notes...')" class="btn btn-sm btn-outline-success px-3 rounded-pill"><i class="fas fa-lock-open"></i> Get Notes</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="download-card p-3 d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <div class="fs-2 text-primary me-3"><i class="far fa-file-alt"></i></div>
+                                            <div>
+                                                <div class="fw-bold text-dark mb-0">Industry Career Matrix Guide</div>
+                                                <span class="text-muted small">PDF Document • 1.2 MB</span>
+                                            </div>
+                                        </div>
+                                        <button onclick="alert('Downloading Career Placement Guide...')" class="btn btn-sm btn-outline-primary px-3 rounded-pill"><i class="fas fa-cloud-download-alt"></i></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <hr class="my-5">
+
+                        <div id="faq" class="mb-4">
+                            <h3 class="fw-bold mb-4">Frequently Asked Questions</h3>
+                            <div class="accordion" id="faqAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed fw-semibold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                            Are corporate capstone internship placements provided within this framework?
+                                        </button>
+                                    </h2>
+                                    <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body text-secondary">
+                                            Yes, our dedicated placement coordination metrics require active enterprise internship validation credits throughout final terms to achieve program completion standards.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed fw-semibold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                            Can tuition balances be parsed into flexible financing installments?
+                                        </button>
+                                    </h2>
+                                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body text-secondary">
+                                            Absolutely. UNICORE offers structured installment clearance structures spread natively across individual operational terms. Speak to the Bursar branch office for exact agreements.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="sidebar-card p-4 bg-white">
+                            <h4 class="fw-bold mb-3">Admissions Open</h4>
+                            <p class="text-muted small mb-4">Secure application processing protocols remain active for the upcoming terminal academic cohort cycle.</p>
+                            
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold text-secondary">Current Core Term</label>
+                                <div class="p-2 border rounded bg-light fw-semibold text-dark">Fall Session Registration</div>
+                            </div>
+
+                            <a href="admissions.html" class="btn btn-primary w-100 btn-apply py-3 mb-3 fw-bold shadow-sm text-center text-decoration-none">
+                                Enroll Online Today <i class="fas fa-arrow-right ms-2"></i>
+                            </a>
+                            
+                            <a href="programs.html" class="btn btn-outline-secondary w-100 py-2 btn-apply small text-center text-decoration-none">
+                                <i class="fas fa-chevron-left me-2"></i> Return to Main Grid
+                            </a>
+                            
+                            <hr class="my-4">
+                            
+                            <h5 class="fw-bold mb-3 small text-uppercase text-muted tracking-wider">Help Desk Interface</h5>
+                            <div class="d-flex align-items-center">
+                                <div class="fs-3 text-primary me-3">
+                                    <i class="fas fa-headset"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold small">Institutional Counseling Support</div>
+                                    <div class="text-muted small">+1 (800) 555-UNICORE</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="container error-container" id="error-view">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <i class="fas fa-search display-1 text-secondary mb-4"></i>
+                <h2 class="fw-bold">Course Tracking Token Not Identified</h2>
+                <p class="text-muted mb-4">The dynamic payload index key passed could not be cross-referenced inside the current active database schema catalog.</p>
+                <a href="programs.html" class="btn btn-primary px-4 py-2">Return to Academic Registry Dashboard</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const dataCoreRegistry = {
+            "bca": {
+                title: "BCA (Honors)",
+                category: "Technology",
+                shortDesc: "Advanced programming, AI fundamentals, database systems, cloud computing and full stack development.",
+                fullDesc: "Our foundational computing pathway bridges functional applied development workflows and systems architecture design concepts. Learn modern platform code bases and data logic layers.",
+                duration: "4 Years",
+                tuitionBase: 25000,
+                img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+                syllabusTree: {
+                    sem1: ["Computer Systems Architecture", "Discrete Mathematical Proof Structures", "Programming Logics using C Essentials", "Communication Language Modules"],
+                    sem2: ["Data Structures & Modeling Principles", "Advanced Object-Oriented Framework C++", "Environmental Systems Analysis", "Web Development Paradigms"],
+                    sem3: ["Database Engine Foundations (SQL)", "Operating System Kernels and Logic", "Software Engineering SDLC Standards", "Computational Statistical Analytics"],
+                    sem4: ["Java Enterprise Solutions Architecture", "Computer Network Packets and Protocols", "Web Framework App Ecosystems", "UI/UX Graphic System Layouts"],
+                    sem5: ["Cloud Infrastructure Native Computing", "Introduction to Artificial Intelligence Models", "Mobile Native App Environments", "Information Cryptography Security"],
+                    sem6: ["Distributed Enterprise Cloud Execution", "Big Data Analytics Foundations", "Applied Machine Learning Models", "Industry Capstone Implementation V1"]
+                }
+            },
+            "cyber-security": {
+                title: "Cyber Security Degree",
+                category: "Security",
+                shortDesc: "Ethical hacking, digital forensics, penetration testing, cryptography and network protection.",
+                fullDesc: "A technical pipeline detailing zero-trust defenses, vulnerability auditing matrix, cryptographic parameters, and digital investigations procedures.",
+                duration: "3 Years",
+                tuitionBase: 35000,
+                img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+                syllabusTree: {
+                    sem1: ["Introduction to Security Architectures", "Linux Enterprise Kernel Systems", "Network Protocol Routing Arrays", "Computational Algebra Logics"],
+                    sem2: ["Applied Modern Cryptography", "Vulnerability Analysis Architectures", "Relational Database Layer Controls", "Python Scripting for Automations"],
+                    sem3: ["Penetration Assessment Methodologies", "Defensive Security Boundary Routing", "Windows Enterprise Security Layouts", "Ethical Hacking Toolkits Matrix"],
+                    sem4: ["Digital Forensics Investigations", "Identity Domain Authorization Access", "Cloud Architecture Threat Frameworks", "Incident Response Command Logics"],
+                    sem5: ["Malware Assembly Reverse Engineering", "Wireless Security Boundary Frameworks", "Governance Compliance Risk Frameworks", "DevSecOps Infrastructure Pipelines"],
+                    sem6: ["Advanced Threat Hunting Architectures", "Securing Industrial IoT Controllers", "Zero-Trust System Deployment", "Enterprise Security Audit Capstone"]
+                }
+            },
+            "data-science": {
+                title: "Data Science Specialization",
+                category: "AI & Data",
+                shortDesc: "Machine learning, Python analytics, statistics, visualization and predictive modeling.",
+                fullDesc: "Learn programmatic telemetry data manipulation pipelines. This trajectory covers raw statistical calculations up to big-data machine-driven modeling networks.",
+                duration: "3 Years",
+                tuitionBase: 40000,
+                img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+                syllabusTree: {
+                    sem1: ["Calculus & Linear Algebra Foundations", "Introduction to Data Science Paradigms", "Structured Query Logic (SQL) Core", "Python Programming Infrastructure"],
+                    sem2: ["Inferential Statistics Analytics", "Exploratory Data Mapping Workflows", "Advanced Scientific Python Systems", "Discrete Mathematical Matrix Arrays"],
+                    sem3: ["Supervised ML Predictive Modeling", "Data Warehousing Pipeline Ingestions", "R Programming Core Frameworks", "Data Visualization Formats (Tableau)"],
+                    sem4: ["Unsupervised Machine Learning Networks", "Big Data Architecture Frameworks (Hadoop)", "Feature Extraction Matrix Optimizations", "Time Series Analytical Models"],
+                    sem5: ["Deep Learning Tensor Architectures", "Natural Language Text Computations", "Cloud Data Pipeline Integrations (AWS)", "Business Intelligence Metric Engineering"],
+                    sem6: ["Production-Grade Model Deployment MLOps", "Reinforcement Learning Algorithm Systems", "Ethics in Automated Algorithms", "Enterprise Machine Learning Capstone"]
+                }
+            },
+            "data-analytics": {
+                title: "Data Analytics",
+                category: "Analytics",
+                shortDesc: "Business intelligence, big data tools, data warehousing, predictive metrics, and executive dashboard engineering.",
+                fullDesc: "Focuses heavily on business telemetry parsing, predictive optimization patterns, automated dashboard deployment, and translation of relational datasets into strategic models.",
+                duration: "3 Years",
+                tuitionBase: 30000,
+                img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+                syllabusTree: {
+                    sem1: ["Data Analytics Fundamentals", "Foundations of Corporate Business Structure", "Excel Data Matrix Formulas", "Relational Database Query Structures"],
+                    sem2: ["Applied Analytics Statistics", "Data Acquisition Cleaning Methods", "Python Analysis Packages (Pandas)", "Corporate Accounting Telemetry"],
+                    sem3: ["Business Intelligence Architecture (PowerBI)", "Data Warehouse Management Systems", "Statistical Regression Analytics", "Data-Driven Communications Structure"],
+                    sem4: ["Predictive Metrics System Design", "Web Analytics Funnel Mapping", "Enterprise Resource Processing Systems", "Optimization Analytics Operations"],
+                    sem5: ["Big Data Analytics Operations (Spark)", "Financial Informatics Modeling", "Marketing Funnel Attribution Models", "Data Governance Regulation Protocols"],
+                    sem6: ["Executive Systems Reporting Pipelines", "Prescriptive Strategy Deployment", "Supply Chain Analytics Modules", "Corporate Analytics Capstone Prototype"]
+                }
+            },
+            "fullstack-dev": {
+                title: "Full Stack Development",
+                category: "Web Systems",
+                shortDesc: "Front-end frameworks, robust back-end architecture, API integrations, containerization, and modern deployment pipelines.",
+                fullDesc: "Designed to craft software engineers fluent in responsive user visual frameworks, database normalization tiers, secure web API abstractions, and automated continuous delivery loops.",
+                duration: "3 Years",
+                tuitionBase: 38000,
+                img: "https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&w=1200&q=80",
+                syllabusTree: {
+                    sem1: ["HTML5 Semantic Elements & CSS Grid", "JavaScript Programming Mechanics", "Responsive Visual Layout Systems", "Git Tracking Source Controllers"],
+                    sem2: ["Advanced Async ECMAScript Design", "UI Design System Implementations", "Node.js Server Run-time Essentials", "Non-Relational NoSQL Engine Models"],
+                    sem3: ["React.js Single Page Architectures", "RESTful API Development Patterns", "SQL Storage Tier Implementations", "Backend App Systems Architecture (Express)"],
+                    sem4: ["Next.js/Vue High Performance Ecosystems", "Microservices Design & Communication", "Token-Based Authentication Protocols (JWT)", "Automated Unit Pipeline Validations"],
+                    sem5: ["Docker Containerization Deployments", "GraphQL Query Architecture API", "Cloud Compute Native Platforms (AWS)", "CI/CD Pipeline Configurations (GitHub Actions)"],
+                    sem6: ["Kubernetes Scaled Orchestration Hubs", "Web Sockets Realtime Infrastructures", "Application Security Penetration Fixes", "Production Full-Stack Application Capstone"]
+                }
+            },
+            "software-engineering": {
+                title: "Software Engineering",
+                category: "Development",
+                shortDesc: "SDLC, software architecture, testing, project design and enterprise development.",
+                fullDesc: "A deeply technical design syllabus emphasizing clean system refactoring, design pattern paradigms, distributed microservices, and enterprise pipeline quality assurances.",
+                duration: "4 Years",
+                tuitionBase: 42000,
+                img: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80",
+                syllabusTree: {
+                    sem1: ["Intro to Algorithmic Logic (C++)", "Mathematical Foundations for Engineers", "Digital Circuit Systems Concepts", "Technical Writing Workflows"],
+                    sem2: ["Object-Oriented Programming (Java)", "Advanced Data Structural Sorting", "Computer Organization Foundations", "Discrete Linear Computations"],
+                    sem3: ["Software Architecture Design Patterns", "Database Engine Architecture", "Operating System Thread Handling", "Software Requirement Specification Analytics"],
+                    sem4: ["Automated Verification Testing Layers", "Web Enterprise Application Design", "Parallel & Distributed Programming", "UI/UX Software Specifications"],
+                    sem5: ["Cloud-Native Systems Software", "Agile Management Engineering Controls", "Mobile Software Design Ecosystems", "Network Layer Computations"],
+                    sem6: ["Microservices Software Architecture", "Enterprise Security Engineering Rules", "Embedded System Firmware Software", "Engineering Project Prototyping V1"]
+                }
+            },
+            "bba": {
+                title: "BBA (Honors)",
+                category: "Business",
+                shortDesc: "Strategic management, finance, operations, leadership and business growth.",
+                fullDesc: "A complete global business pathway merging financial balancing logic, scaling corporate psychology rules, human resource frameworks, and cross-border commercial strategy execution.",
+                duration: "4 Years",
+                tuitionBase: 20000,
+                img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+                syllabusTree: {
+                    sem1: ["Principles of Corporate Organization", "Microeconomic Logic Matrices", "Business Mathematics Foundations", "Business Communication Systems"],
+                    sem2: ["Macroeconomic Environment Dynamics", "Financial Accounting Regulations", "Organizational Psychology Vectors", "Marketing Management Fundamentals"],
+                    sem3: ["Corporate Financial Architecture", "Human Resource Allocation Systems", "Production & Operations Frameworks", "Legal Regulatory Boundaries"],
+                    sem4: ["Business Information Systems Hubs", "Consumer Purchase Decision Logic", "Statistical Models for Business", "Research Methodology Frameworks"],
+                    sem5: ["Strategic Enterprise Target Modeling", "International Trade Logistics", "Corporate Investment Formats", "Business Ethics Governance Metrics"],
+                    sem6: ["Agile Project Management Systems", "Digital Business Transformation Strategies", "Venture Capital Financing Loops", "Senior Management Thesis Portfolio"]
+                }
+            },
+            "digital-marketing": {
+                title: "Digital Marketing Track",
+                category: "Marketing",
+                shortDesc: "SEO, branding, content strategy, paid ads and growth marketing.",
+                fullDesc: "An analytics-backed approach to online user base activation. Focuses heavily on algorithmic bidding systems, conversion loop optimizations, programmatic display tracking, and multi-channel attribution networks.",
+                duration: "3 Years",
+                tuitionBase: 22000,
+                img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+                syllabusTree: {
+                    sem1: ["Marketing Communication Paradigms", "Introduction to Digital Spaces", "Visual Design Layout Systems", "Principles of Consumer Psychology"],
+                    sem2: ["Search Engine Optimizations (SEO) Core", "Content Strategy Production Engines", "Web Technology Interface Basics", "Digital Copywriting Frameworks"],
+                    sem3: ["Programmatic Search Ad Systems (Google PPC)", "Web Traffic Analytics Architecture", "Social Media Performance Ecosystems", "Email Automation Marketing Frameworks"],
+                    sem4: ["Data Performance Paid Conversion Funnels", "Inbound Audience Growth Mechanics", "Video Content Production Systems", "Mobile Ad Marketing Frameworks"],
+                    sem5: ["Digital Brand Positioning Strategy", "Marketing Automation Tool Automation", "E-Commerce Architecture Systems", "Legal Regulatory Advertising Laws"],
+                    sem6: ["Data Funnel Attribution Formats", "Omnichannel Growth Loop Deployments", "Marketing Budget ROI Optimization Analytics", "Enterprise Growth Campaign Capstone"]
+                }
+            },
+            "financial-management": {
+                title: "Financial Management",
+                category: "Finance",
+                shortDesc: "Investment planning, accounting, risk analysis and corporate finance.",
+                fullDesc: "Deep quantitative frameworks examining risk management mitigation, corporate accounting configurations, derivatives pricing models, and data-driven portfolio management systems.",
+                duration: "3 Years",
+                tuitionBase: 24000,
+                img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+                syllabusTree: {
+                    sem1: ["Financial Accounting Frameworks", "Economic Quantitative Analytics", "Principles of Business Economics", "Business Compliance Regulations"],
+                    sem2: ["Advanced Managerial Cost Accounting", "Corporate Finance Basics", "Statistical Probability Matrix Arrays", "Spreadsheet Financial Engineering"],
+                    sem3: ["Investment Security Analysis", "Working Capital Asset Control", "Financial Intermediary Institutions", "Taxation Architecture Formats"],
+                    sem4: ["Portfolio Optimization Models", "Financial Derivatives Engineering", "Corporate Valuation Models", "Strategic Wealth Allocations"],
+                    sem5: ["International Financial Market Networks", "Corporate Risk Hedging Operations", "Mergers & Corporate Restructuring", "Credit Analysis Underwriting Models"],
+                    sem6: ["Algorithmic Fintech App Systems", "Financial Governance Regulations", "Investment Banking Advisory Protocols", "Financial Modeling Simulation Capstone"]
+                }
+            },
+            "hr-management": {
+                title: "Human Resource Management",
+                category: "HR",
+                shortDesc: "Talent acquisition, leadership, team strategy and workforce planning.",
+                fullDesc: "Learn strategic organization mapping, workforce predictive scaling metrics, conflict alignment mechanics, and industrial labor relations code analysis.",
+                duration: "3 Years",
+                tuitionBase: 21000,
+                img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80",
+                syllabusTree: {
+                    sem1: ["Foundations of Management Theory", "Introduction to Human Capital Management", "Sociological Frameworks in Organizations", "Business Communications Systems"],
+                    sem2: ["Organizational Behavior Systems", "Labor Market Economics Analysis", "HR Information Technology Frameworks", "Personnel Resourcing Systems"],
+                    sem3: ["Strategic Talent Acquisition Systems", "Job Architecture Competency Analytics", "Employee Learning & Training Systems", "Performance Appraisal Systems"],
+                    sem4: ["Compensation & Benefits Engineering", "Industrial Relations Dispute Channels", "Labor Law Compliance Codes", "Corporate Leadership Architectures"],
+                    sem5: ["Strategic Workforce Scalability Planning", "Cross-Cultural HR Environments", "Organizational Change Restructuring", "People Analytics Metrics Models"],
+                    sem6: ["Corporate Dispute Resolution Processes", "Strategic HR Consultancy Modules", "Ethics in Human Capital Deployment", "Strategic HR Workforce Capstone Project"]
+                }
+            },
+            "entrepreneurship": {
+                title: "Entrepreneurship (Honors)",
+                category: "Startup",
+                shortDesc: "Startup building, innovation, business planning and scaling strategy.",
+                fullDesc: "A structural curriculum designed to cultivate lean startup execution loops, capitalization models, capitalization table calculations, and rapid scale marketing systems.",
+                duration: "3 Years",
+                tuitionBase: 26000,
+                img: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
+                syllabusTree: {
+                    sem1: ["The Entrepreneurial Mindset Matrix", "Design Thinking & Problem Mapping", "Foundational Product Economics Foundations", "Business Formation Structures"],
+                    sem2: ["Minimum Viable Product Design", "Startup Legal Parameters & IP Rules", "Customer Discovery Iteration Protocols", "Foundational Accounting Systems"],
+                    sem3: ["Startup Unit Economic Formats", "Early Stage Capitalization (Seed)", "Go-To-Market Execution Workflows", "Digital Acquisition Channels"],
+                    sem4: ["Venture Capital Multi-Tier Funding", "Scalable Operations Frameworks", "Agile Product Lifecycle Metrics", "Corporate Sales Stack Engineering"],
+                    sem5: ["Organizational Scaling Metrics", "Venture Term Sheet Structural Modeling", "Strategic Ecosystem Alliances", "Franchise & Geographic Expansion"],
+                    sem6: ["Exit Strategy Mergers Acquisitions", "Social Venture Enterprise Systems", "Continuous Innovation Frameworks", "Live Venture Incubation Defense Capstone"]
+                }
+            },
+            "international-business": {
+                title: "International Business Systems",
+                category: "Global Business",
+                shortDesc: "Trade systems, global economics, supply chains and international strategy.",
+                fullDesc: "Provides processing capabilities to direct global operations. Overcome tariff boundary restrictions, transnational logistic choke points, and cross-border currency exposure anomalies.",
+                duration: "4 Years",
+                tuitionBase: 25000,
+                img: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80",
+                syllabusTree: {
+                    sem1: ["Geopolitical Economic Foundations", "International Commerce Fundamentals", "Cross-Cultural Management Dynamics", "Global Commercial Geography"],
+                    sem2: ["Macro Trade System Dynamics", "International Regulatory Policies", "Global Logistics Supply Frameworks", "Foreign Exchange Markets Basics"],
+                    sem3: ["Transnational Supply Chains Optimization", "Customs clearance & Tariff Codes", "International Marketing Implementations", "Global Financial Accounting"],
+                    sem4: ["Cross-Border Contract Systems", "Emerging Global Trade Blocs", "International Investment Risk Matrices", "Global Brand Resource Control"],
+                    sem5: ["Foreign Market Direct Entry Systems", "International Currency Risk Management", "Global Sourcing Vendor Metrics", "Transnational Dispute Systems"],
+                    sem6: ["Global Corporate Governance Metrics", "International Merger Integration Models", "Sustainable Global Enterprise Tactics", "Transnational Strategy Capstone Project"]
+                }
+            },
+            "ai": {
+                title: "Artificial Intelligence B.Sc.",
+                category: "AI",
+                shortDesc: "Neural networks, machine learning, deep learning and intelligent automation.",
+                fullDesc: "Advanced path training software engineers in structural vector calculus, backpropagation neural networks, deep visual models, and multi-agent system configurations.",
+                duration: "4 Years",
+                tuitionBase: 48000,
+                img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80",
+                syllabusTree: {
+                    sem1: ["Advanced Vector Calculus Linear Algebra", "Python Intelligence Foundations", "Algorithmic Logic Formats", "Discrete Computing Math Concepts"],
+                    sem2: ["Probability Metrics Predictive Logics", "AI Optimization Search Models", "Data Structural Storage Design", "Object Oriented System Architectures"],
+                    sem3: ["Supervised Intelligence Core Networks", "Knowledge Representation Abstractions", "Relational Vector Storage SQL", "Cognitive Computing Engineering"],
+                    sem4: ["Deep Convolutional Tensor Frameworks", "Natural Language Text Parsing (NLP)", "Reinforcement Learning Model Controls", "Automated Heuristics Algorithms"],
+                    sem5: ["Multi-Agent Coordinate Autonomy", "Cloud Intelligence Model Deployments", "Generative AI Transformer Layouts", "Computer Visual Array Analytics"],
+                    sem6: ["Edge Hardware Computer Deployment", "Ethical AI Safety Frameworks", "Robotic Path Planning Integrations", "Advanced Autonomous Systems Capstone"]
+                }
+            },
+            "machine-learning": {
+                title: "Machine Learning Engineering",
+                category: "ML",
+                shortDesc: "Predictive systems, model training, automation and intelligent data analysis.",
+                fullDesc: "Highly programmatic modules targeting raw vector computations, statistical distributions tuning, automated model testing, and scalable asset feature mapping pipelines.",
+                duration: "3 Years",
+                tuitionBase: 45000,
+                img: "https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=1200&q=80",
+                syllabusTree: {
+                    sem1: ["Linear Regression Algebra Concepts", "Mathematical Optimization Systems", "Python Data Analytics Stack", "Data Ingestion Pipeline Mechanics"],
+                    sem2: ["Statistical Inference Probability Models", "Supervised Classifications Frameworks", "Advanced Database Cluster Structures", "Algorithm Complexity Engineering"],
+                    sem3: ["Unsupervised Feature Clustering Trees", "Ensemble Modeling Algorithms", "Feature Transformation Matrix Operations", "Time Series ML Modeling"],
+                    sem4: ["Deep Feedforward Neural Networks", "Large Distributed Model Training (Spark)", "ML Experimental Parameter Loggers", "Natural Language Tokenizations"],
+                    sem5: ["Production ML Infrastructure (MLOps)", "Anomaly Tracking Detection Models", "Reinforcement System Basics", "Cloud Model Serving Platforms (AWS)"],
+                    sem6: ["Model Quantization Optimization Tools", "Graph Machine Learning Algorithms", "Explainable AI Transparency Models", "Enterprise ML Production Pipeline Capstone"]
+                }
+            },
+            "robotics": {
+                title: "Robotics Engineering",
+                category: "Robotics",
+                shortDesc: "Automation systems, sensors, robotic controls and smart machines.",
+                fullDesc: "The exact intersection point where spatial mechanics meet logic scripts. Covers forward/inverse rigid-body dynamics, microcontroller circuit pathing, and hardware feedback configurations.",
+                duration: "4 Years",
+                tuitionBase: 44000,
+                img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+                syllabusTree: {
+                    sem1: ["Engineering Physics Vectors Fundamentals", "Calculus & Differential Systems", "Introduction to Mechatronic Design", "Embedded Programming (C) Core"],
+                    sem2: ["Electric Circuit Telemetry Networks", "Digital Logic Hardware Controls", "Solid Mechanics Dynamics Basics", "3D CAD Solid Modeling Frameworks"],
+                    sem3: ["Rigid-Body Kinematics Space Matrices", "Microcontroller System Architecture", "Actuator Fluidics Driver Controls", "Sensor Telemetry Calibration Metrics"],
+                    sem4: ["Feedback Control System Automations", "Robotic Operating Systems (ROS)", "Computer Vision Object Anchors", "Embedded RTOS Task Schedulers"],
+                    sem5: ["Autonomous Navigation Path Vectors", "Robotic Arm Dynamics Manipulation", "Machine Learning Robotics Control", "Industrial Production Line Automation"],
+                    sem6: ["Human-Robot Collaborative Safety Systems", "Bio-Inspired Robotic Architectures", "Swarm Robotic Telemetry Systems", "Autonomous Hardware Prototyping Capstone"]
+                }
+            },
+            "blockchain": {
+                title: "Blockchain Technology Systems",
+                category: "Blockchain",
+                shortDesc: "Smart contracts, distributed systems, crypto architecture and secure ledgers.",
+                fullDesc: "Learn zero-trust architecture infrastructure. Master cryptography hashing properties, peer-to-peer ledger storage, distributed smart contracts execution, and decentralized finance engineering.",
+                duration: "3 Years",
+                tuitionBase: 40000,
+                img: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1200&q=80",
+                syllabusTree: {
+                    sem1: ["Cryptography Core Principles (ECC)", "Distributed Peer Network Topologies", "Data Structure Merkle Tree Layouts", "Introduction to Digital Ledgers"],
+                    sem2: ["Bitcoin Script Mechanics Architecture", "Ethereum EVM Run-Time Foundations", "Smart Contract Development (Solidity)", "Web3 Application Interface Frameworks"],
+                    sem3: ["Consensus Mechanism Protocols (PoW/PoS)", "Decentralized Finance (DeFi) Protocols", "Advanced Smart Contract Auditing", "Distributed Storage Engines (IPFS)"],
+                    sem4: ["Hyperledger Fabric Enterprise Frameworks", "Zero-Knowledge Cryptography Proofs (ZKP)", "Cross-Chain Token Relay Bridging", "Decentralized Token Governance (DAO)"],
+                    sem5: ["Layer 2 Scaling Solutions (Rollups)", "Blockchain Node Cluster Optimizations", "Digital Asset Tokenization Frameworks", "Regulatory Cryptographic Compliance Standards"],
+                    sem6: ["Custom Blockchain Network Deployment", "High Performance Architecture (Rust/Solana)", "Enterprise Blockchain Integration Models", "Decentralized Production Node Capstone"]
+                }
+            },
+            "generative-ai": {
+                title: "Generative AI Systems",
+                category: "GenAI",
+                shortDesc: "Large language models (LLMs), stable diffusion, synthetic data creation, prompt engineering architectures, and semantic search networks.",
+                fullDesc: "Deep exploration of self-attention mechanisms, transformer structures, fine-tuning protocols, Retrieval-Augmented Generation (RAG) routing, and vector index databases.",
+                duration: "3 Years",
+                tuitionBase: 50000,
+                img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
+                syllabusTree: {
+                    sem1: ["Probability Vector Calculus Mechanics", "Deep Neural Model Basics", "Natural Language Token Operations", "Python AI Acceleration Libraries"],
+                    sem2: ["Self-Attention Matrix Transformers", "Large Language Model Pretraining Laws", "Vector Embedding Databases (Pinecone)", "Prompt Programmatic Routing Engines"],
+                    sem3: ["Retrieval-Augmented Generation (RAG)", "Parameter-Efficient Fine-Tuning (LoRA)", "Reinforcement Learning Feedback (RLHF)", "Model Quantization Runtime Tiers"],
+                    sem4: ["Latent Diffusion Graphic Generation", "Multimodal Fusion Network Formali", "Synthetic Dataset Pipeline Generation", "AI Evaluation Metrics Pipelines"],
+                    sem5: ["Autonomous Agent Logic Frameworks (LangChain)", "Large-Scale Model Serving Infrastructures", "Prompt Injecting Cyber Defense Rules", "Copyright & Ethics Regulation Analytics"],
+                    sem6: ["Custom Foundational LLM Adaptations", "Enterprise Workflow GenAI Integration", "Realtime Edge GenAI Architectures", "Generative Cognitive System Capstone"]
+                }
+            },
+            "computer-vision": {
+                title: "Computer Vision Specialization",
+                category: "Vision",
+                shortDesc: "Image processing, object recognition models, spatial mapping frameworks, autonomous navigation vision, and digital pixel analytics.",
+                fullDesc: "Train machines to process multidimensional pixel streams. Details convolutional filters, multi-target localization, spatial point cloud tracking, and sensor fusion algorithms.",
+                duration: "3 Years",
+                tuitionBase: 42000,
+                img: "https://images.unsplash.com/photo-1527474305487-b87b222841cc?auto=format&fit=crop&w=1200&q=80",
+                syllabusTree: {
+                    sem1: ["Digital Pixel Array Mathematics", "Linear Spatial Coordinate Systems", "OpenCV Image Processing Scripts", "Python Matrix Analytics Core"],
+                    sem2: ["Convolutional Neural Network Design", "Image Segmentation Matrix Masks", "Target Feature Detection Anchors", "Visual Model Optimizers Frameworks"],
+                    sem3: ["Real-Time Object Detection (YOLO)", "Deep Temporal Video Analysis", "Multi-Object Tracker Computations", "Transfer Learning Vision Engines"],
+                    sem4: ["3D Spatial Scene Reconstruction", "LiDAR Camera Data Sensor Fusion", "Optical Flow Point Track Tracking", "Generative Adversarial Vision (GANs)"],
+                    sem5: ["Autonomous Navigation Vision Controls", "Edge Processing Model Implementations", "Medical Image Scanning Diagnoses", "Biometric Identity Face Metrics"],
+                    sem6: ["Spatial Mapping Point Cloud Calibration", "Advanced Vision Transformer Systems", "Embedded Systems Vision Deployment", "Computer Vision Production Infrastructure Capstone"]
+                }
+            }
+        };
+
+        function initAppEngine() {
+            const params = new URLSearchParams(window.location.search);
+            const routeKey = params.get('course');
+
+            const viewFrame = document.getElementById('program-content');
+            const errorFrame = document.getElementById('error-view');
+
+            if (routeKey && dataCoreRegistry[routeKey]) {
+                const profile = dataCoreRegistry[routeKey];
+                
+                document.getElementById('course-title').innerText = profile.title;
+                document.getElementById('course-category').innerText = profile.category;
+                document.getElementById('course-short-desc').innerText = profile.shortDesc;
+                document.getElementById('course-full-desc').innerText = profile.fullDesc;
+                document.getElementById('meta-duration').innerText = profile.duration;
+                
+                const frameImg = document.getElementById('course-image');
+                frameImg.src = profile.img;
+                frameImg.alt = profile.title + " Platform Banner View";
+
+                const listIds = ['sem1', 'sem2', 'sem3', 'sem4', 'sem5', 'sem6'];
+                listIds.forEach((id) => {
+                    const listElement = document.getElementById('list-' + id);
+                    if (listElement && profile.syllabusTree[id]) {
+                        listElement.innerHTML = ''; 
+                        profile.syllabusTree[id].forEach(topic => {
+                            const li = document.createElement('li');
+                            li.className = 'list-group-item d-flex align-items-center bg-transparent ps-0';
+                            li.innerHTML = `<i class="fas fa-check-circle text-primary me-3 small"></i> <span class="text-secondary fw-medium">${topic}</span>`;
+                            listElement.appendChild(li);
+                        });
+                    }
+                });
+
+                const baseSemCost = profile.tuitionBase;
+                const labCost = 5000;
+                const libraryCost = 2500;
+                const totalSemCost = baseSemCost + labCost + libraryCost;
+
+                document.getElementById('fee-sem').innerText = `₹${baseSemCost.toLocaleString('en-IN')}`;
+                document.getElementById('fee-annual').innerText = `₹${(baseSemCost * 2).toLocaleString('en-IN')}`;
+                document.getElementById('fee-sem-total').innerText = `₹${totalSemCost.toLocaleString('en-IN')}`;
+                document.getElementById('fee-annual-total').innerText = `₹${(totalSemCost * 2).toLocaleString('en-IN')}`;
+
+                document.title = `${profile.title} Curriculum Info | UNICORE University`;
+            } else {
+                viewFrame.style.display = 'none';
+                errorFrame.style.display = 'block';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', initAppEngine);
+    </script>
+</body>
+</html>
